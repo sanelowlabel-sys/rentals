@@ -1,0 +1,176 @@
+// Prisma Schema for Gauteng Studio Gear Rentals
+// Database schema supporting Users, Equipment, Rentals, Wishlist, and Tracking History
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  STUDIO_MANAGER
+  ADMIN
+}
+
+enum RentalStatus {
+  CONFIRMED
+  PREPARING
+  OUT_FOR_DELIVERY
+  DELIVERED
+  RETURNED
+  CANCELLED
+}
+
+enum DeliveryType {
+  DELIVERY
+  HUB_COLLECTION
+}
+
+enum PaymentMethod {
+  PAYFAST
+  OZOW_INSTANT_EFT
+  CREDIT_CARD
+  SNAPSCAN
+  ZAPPER
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+  FAILED
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  passwordHash  String
+  fullName      String
+  phoneNumber   String?
+  suburb        String?         // Gauteng Suburb (e.g. Sandton, Rosebank, Menlyn, Centurion)
+  city          String          @default("Johannesburg") // Johannesburg, Pretoria, Midrand, Ekurhuleni
+  postalCode    String?         // 4-digit South African postal code
+  streetAddress String?
+  rewardCredits Float           @default(150.0) // SoundCoins / ZAR rental loyalty credits
+  role          Role            @default(USER)
+  rentals       Rental[]
+  wishlists     Wishlist[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@index([email])
+}
+
+model Equipment {
+  id                String       @id @default(uuid())
+  name              String       // e.g. "Korg Kaossilator", "Yamaha HS8"
+  slug              String       @unique
+  category          String       // Synths & FX, DJ Gear, Studio Monitors, Audio Interfaces & MIDI, Studio Bundles
+  brand             String       // Korg, Yamaha, JBL, Pioneer, Akai, Behringer, Steinberg, Hybrid, Numark
+  model             String
+  description       String
+  dailyPriceZar     Float        // Daily rate in South African Rand (ZAR)
+  weekendPriceZar   Float        // Weekend special package rate (Friday 14:00 to Monday 10:00)
+  depositZar        Float        // Refundable security deposit
+  stockQuantity     Int          // Total stock
+  availableQuantity Int          // Real-time available units in Gauteng hub
+  bundleDetails     String?      // e.g. "Includes 2x XLR cables, power supply, padded flight case"
+  condition         String       @default("Studio Grade - Inspected")
+  imageUrl          String
+  specs             String       // JSON string of hardware technical specifications
+  isFeatured        Boolean      @default(false)
+  wishlists         Wishlist[]
+  rentalItems       RentalItem[]
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  @@index([category])
+  @@index([brand])
+}
+
+model Rental {
+  id                   String            @id @default(uuid())
+  orderNumber          String            @unique // e.g. "GP-2026-8942"
+  userId               String
+  user                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status               RentalStatus      @default(CONFIRMED)
+  deliveryType         DeliveryType      @default(DELIVERY)
+  startDate            DateTime
+  endDate              DateTime
+  durationDays         Int
+  dailySubtotalZar     Float
+  deliveryFeeZar       Float             @default(120.0)
+  discountZar          Float             @default(0.0)
+  depositTotalZar      Float
+  totalZar             Float
+  paymentStatus        PaymentStatus     @default(PAID)
+  paymentMethod        PaymentMethod     @default(PAYFAST)
+  paymentReference     String?
+  // Gauteng Regional Delivery Location
+  deliveryAddress      String
+  deliverySuburb       String            // e.g. "Rosebank", "Centurion", "Fourways"
+  deliveryCity         String            // "Johannesburg", "Pretoria", "Midrand"
+  deliveryPostalCode   String
+  deliveryInstructions String?
+  hubLocation          String?           // "Sandton Main Hub", "Menlyn Pretoria Depot", "Midrand Logistics"
+  // Dispatch & Logistics info
+  courierName          String?           // "Gauteng Studio Courier Express"
+  driverName           String?           // "Sipho Mthembu"
+  driverPhone          String?           // "+27 82 459 2911"
+  vehiclePlate         String?           // "GP 44 XK"
+  currentLocationLat   Float?
+  currentLocationLng   Float?
+  estimatedDeliveryTime DateTime?
+  items                RentalItem[]
+  trackingHistory      TrackingHistory[]
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  @@index([userId])
+  @@index([orderNumber])
+  @@index([status])
+}
+
+model RentalItem {
+  id            String    @id @default(uuid())
+  rentalId      String
+  rental        Rental    @relation(fields: [rentalId], references: [id], onDelete: Cascade)
+  equipmentId   String
+  equipment     Equipment @relation(fields: [equipmentId], references: [id])
+  quantity      Int       @default(1)
+  dailyPriceZar Float
+  totalPriceZar Float
+
+  @@index([rentalId])
+  @@index([equipmentId])
+}
+
+model Wishlist {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  equipmentId String
+  equipment   Equipment @relation(fields: [equipmentId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, equipmentId])
+  @@index([userId])
+}
+
+model TrackingHistory {
+  id          String       @id @default(uuid())
+  rentalId    String
+  rental      Rental       @relation(fields: [rentalId], references: [id], onDelete: Cascade)
+  stage       RentalStatus
+  title       String
+  description String
+  hubLocation String?      // e.g. "Midrand Central Hub, Gauteng"
+  timestamp   DateTime     @default(now())
+  isCompleted Boolean      @default(false)
+
+  @@index([rentalId])
+}

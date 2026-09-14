@@ -1,0 +1,457 @@
+import { Equipment } from '../types.ts';
+
+export const INITIAL_EQUIPMENT: Equipment[] = [
+  {
+    id: 'eq-korg-kaossilator',
+    name: 'Korg Kaossilator',
+    slug: 'korg-kaossilator',
+    brand: 'Korg',
+    model: 'KO-1 Dynamic Phrase Synthesizer',
+    category: 'Synths & FX',
+    description: 'Compact dynamic phrase synthesizer that turns the touch pad into a musical instrument. Generate melodies, arpeggios, and sound effects simply by stroking or tapping with your finger. Includes 100 sound programs, scale key control, and built-in loop recording.',
+    dailyPriceZar: 180,
+    weekendPriceZar: 420,
+    depositZar: 500,
+    stockQuantity: 4,
+    availableQuantity: 3,
+    condition: 'Studio Grade - Inspected & Cleaned',
+    imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes 9V DC adapter, RCA audio cables, and protective hard case.',
+    specs: {
+      'Sound Generator': 'PCM & Analog Modeling Synthesizer',
+      'Programs': '100 Lead, Acoustic, Bass, Chord, SFX, & Drum Programs',
+      'Key / Scale': '31 Musical Scales with Key transpose',
+      'Gate Arpeggiator': '50 Rhythm patterns',
+      'Connectors': 'Stereo RCA Out, 3.5mm Stereo Headphone Jack',
+      'Power': '4x AA Batteries or DC 9V power supply'
+    },
+    tags: ['Synthesizer', 'Touchpad', 'Loop Recorder', 'Live Performance', 'Korg'],
+    isFeatured: true
+  },
+  {
+    id: 'eq-korg-kp3',
+    name: 'Korg Kaoss Pad KP3',
+    slug: 'korg-kaoss-pad-kp3',
+    brand: 'Korg',
+    model: 'KP3+ Dynamic Effect/Sampler',
+    category: 'Synths & FX',
+    description: 'Flagship effects processor and phrase sampler. Control complex delays, reverbs, grain shifters, vinyl breaks, and ducking sidechain effects in real-time with the glowing X-Y touch pad. Features 4 sample banks with instantaneous playback and BPM sync.',
+    dailyPriceZar: 260,
+    weekendPriceZar: 590,
+    depositZar: 700,
+    stockQuantity: 3,
+    availableQuantity: 2,
+    condition: 'Mint Condition - Flawless Touch Screen',
+    imageUrl: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes power adapter, dual RCA cables, USB cable, and SD card for audio loop storage.',
+    specs: {
+      'Effects Programs': '128 Effects (Filters, Delays, Reverbs, Vocoder, Looper)',
+      'Sample Banks': '4 Dedicated Sample Flash Banks (16-bit, 48 kHz)',
+      'Display': '8x8 Red LED Matrix touch display',
+      'Inputs': 'RCA Stereo Line In, 1/4" Mic In with level control',
+      'Outputs': 'RCA Stereo Line Out, 1/4" Headphone Out',
+      'MIDI & USB': 'MIDI In/Out, USB Type-B MIDI Control'
+    },
+    tags: ['DJ Effects', 'Sampler', 'X-Y Pad', 'Live Looper', 'Remix'],
+    isFeatured: true
+  },
+  {
+    id: 'eq-korg-volca-fm',
+    name: 'Korg Volca FM',
+    slug: 'korg-volca-fm',
+    brand: 'Korg',
+    model: 'Volca FM 3-Voice Digital Synthesizer',
+    category: 'Synths & FX',
+    description: 'Legendary 6-operator FM synthesizer engine completely compatible with Yamaha DX7 sysex patches. Packed with an intuitive 16-step sequencer with motion sequence recording, chorus effect, and arpeggiator for shimmering vintage bells, pads, and iconic basslines.',
+    dailyPriceZar: 175,
+    weekendPriceZar: 390,
+    depositZar: 450,
+    stockQuantity: 5,
+    availableQuantity: 4,
+    condition: 'Excellent - Fully Calibrated',
+    imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes 9V power supply, 3.5mm sync cable, and audio breakout cable.',
+    specs: {
+      'Synthesis': '6 Operators, 32 Algorithms (Full DX7 parameter compatibility)',
+      'Polyphony': '3 Voices',
+      'Sequencer': '16-Step Polyphonic Sequencer with Active Step & Warp',
+      'Effects': 'Built-in Lush Chorus',
+      'Sync': '3.5mm Sync In/Out, 5-pin DIN MIDI In'
+    },
+    tags: ['FM Synth', 'DX7 Compatible', 'Sequencer', 'Electronic', 'Korg Volca']
+  },
+  {
+    id: 'eq-korg-volca-keys',
+    name: 'Korg Volca Keys',
+    slug: 'korg-volca-keys',
+    brand: 'Korg',
+    model: 'Volca Keys Analogue Loop Synth',
+    category: 'Synths & FX',
+    description: 'Genuine 3-voice analogue synthesizer delivering true analog warmth, ringing ring modulation, sync leads, and spacey tape-style delay effects. Easy hands-on controls for VCF cutoff, envelope generator, and ring mod.',
+    dailyPriceZar: 175,
+    weekendPriceZar: 390,
+    depositZar: 450,
+    stockQuantity: 4,
+    availableQuantity: 3,
+    condition: 'Studio Grade - Warm Analogue Circuits',
+    imageUrl: 'https://images.unsplash.com/photo-1563330232-57114bb0823c?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes power adapter, sync lead, 3.5mm to dual 1/4" mono jack cable.',
+    specs: {
+      'Type': 'True Analogue Synthesizer (3 VCO, 1 VCF, 1 VCA, 1 LFO, 1 EG)',
+      'Polyphony': '3 Voices (Poly, Unison, Octave, Fifth, Unison Ring, Poly Ring)',
+      'Effects': 'Space Delay with Time and Feedback controls',
+      'Sequencer': 'Loop Sequencer with Motion Sequence automation'
+    },
+    tags: ['Analogue', 'Loop Synth', 'Warm Tone', 'Tape Delay', 'Korg Volca']
+  },
+  {
+    id: 'eq-korg-volca-bass',
+    name: 'Korg Volca Bass',
+    slug: 'korg-volca-bass',
+    brand: 'Korg',
+    model: 'Volca Bass Analogue Bass Machine',
+    category: 'Synths & FX',
+    description: 'Dedicated 3-analogue-oscillator bass synthesizer engineered for heavy, driving basslines, aggressive acid squelch, and crisp sub grooves. Features a classic Roland-style resonant analog filter tuned specifically for punchy low-end presence.',
+    dailyPriceZar: 175,
+    weekendPriceZar: 390,
+    depositZar: 450,
+    stockQuantity: 4,
+    availableQuantity: 4,
+    condition: 'Studio Grade - Pristine Low-End',
+    imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Comes with DC adapter, sync patch cable, and 1/4" studio patch cord.',
+    specs: {
+      'Structure': '3 Analogue VCOs (Saw / Square) with individual tuning',
+      'Filter': '12dB/oct resonant VCF with high resonance self-oscillation',
+      'Sequencer': 'Electribe-style 16-step sequencer with Slide and Active Step'
+    },
+    tags: ['Analogue Bass', 'Acid Bassline', 'Sub Woofer', 'Techno & Amapiano', 'Korg']
+  },
+  {
+    id: 'eq-dbbox',
+    name: 'DBBox',
+    slug: 'dbbox-audio-toolbox',
+    brand: 'DBBox',
+    model: 'Studio DI Box & Audio Cable Signal Tester',
+    category: 'Accessories & DI',
+    description: 'Essential professional audio multi-tool and active Direct Injection (DI) box with built-in audio cable tester and pink noise/sine wave line generator. Perfect for live sound checks, eliminating ground loops in Johannesburg studio spaces, and verifying multi-core snake cables.',
+    dailyPriceZar: 110,
+    weekendPriceZar: 250,
+    depositZar: 350,
+    stockQuantity: 6,
+    availableQuantity: 6,
+    condition: 'Rugged Aluminum Chassis - Lab Tested',
+    imageUrl: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes ground lift switch, test leads, phantom power detection, and carry pouch.',
+    specs: {
+      'Functionality': 'Active DI Box + Phantom Power Meter + Cable Tester (XLR, 1/4", RCA, MIDI, Speakon)',
+      'Signal Generator': '1kHz Sine Wave & Pink Noise line test generator',
+      'Ground Lift': 'Switchable Hum & Ground loop isolation transformer',
+      'Impedance': 'High-Z 1M Ohm input to 600 Ohm balanced XLR low-Z'
+    },
+    tags: ['DI Box', 'Cable Tester', 'Audio Toolbox', 'Ground Lift', 'Studio Essential']
+  },
+  {
+    id: 'eq-akai-max-49',
+    name: 'Akai Max 49',
+    slug: 'akai-max-49',
+    brand: 'Akai Professional',
+    model: 'MAX49 USB/MIDI/CV Controller',
+    category: 'Audio Interfaces & MIDI',
+    description: 'Advanced 49-key performance USB/MIDI/CV controller featuring semi-weighted keys with aftertouch, 8 backlit LED touch faders, 12 MPC pads with Note Repeat, and integrated CV/Gate outputs for controlling vintage modular and analog synths alongside your modern DAW.',
+    dailyPriceZar: 290,
+    weekendPriceZar: 680,
+    depositZar: 850,
+    stockQuantity: 3,
+    availableQuantity: 2,
+    condition: 'Pristine Keybed & Responsive Touch Faders',
+    imageUrl: 'https://images.unsplash.com/photo-1520523839898-50712825e3a7?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes heavy duty USB cable, sustain pedal, and padded gig bag.',
+    specs: {
+      'Keybed': '49 semi-weighted keys with Channel Aftertouch',
+      'Controls': '8 backlit LED touch faders, 12 authentic MPC drum pads (4 banks)',
+      'Sequencing': 'Built-in 32-step arpeggiator and step sequencer',
+      'Analog CV': 'CV & Gate outputs (1V/Oct) to drive Eurorack / analog gear',
+      'Connectivity': 'USB MIDI, 5-pin MIDI In/Out, Expression & Sustain inputs'
+    },
+    tags: ['MIDI Controller', '49 Keys', 'MPC Pads', 'CV/Gate', 'Akai Pro'],
+    isFeatured: true
+  },
+  {
+    id: 'eq-yamaha-hs8',
+    name: 'Yamaha HS8 (x1)',
+    slug: 'yamaha-hs8-monitor',
+    brand: 'Yamaha',
+    model: 'HS8 Active Nearfield Monitor (Single Unit)',
+    category: 'Studio Monitors',
+    description: 'The industry-benchmark white-cone reference monitor. 8-inch cone woofer paired with a 1-inch dome tweeter driven by a 120W bi-amp amplification system. Delivers ultra-honest, transparent sound reproduction that guarantees your mixes translate perfectly across all sound systems.',
+    dailyPriceZar: 280,
+    weekendPriceZar: 650,
+    depositZar: 950,
+    stockQuantity: 5,
+    availableQuantity: 3,
+    condition: 'Pristine White Cone - Calibrated Room Response',
+    imageUrl: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes IEC power cable, balanced 3m XLR to XLR and TRS balanced cables, and isolation foam pad.',
+    specs: {
+      'Configuration': '2-way bi-amp powered studio monitor',
+      'Drivers': '8" cone woofer and 1" dome tweeter',
+      'Power Output': '120W total (75W LF + 45W HF)',
+      'Frequency Range': '38Hz - 30kHz',
+      'Room Controls': 'ROOM CONTROL and HIGH TRIM response switches',
+      'Inputs': 'XLR3-31 type (balanced) and 1/4" Phone (balanced)'
+    },
+    tags: ['Studio Monitor', 'Yamaha HS8', 'Reference Audio', 'Mixing & Mastering', 'White Cone'],
+    isFeatured: true
+  },
+  {
+    id: 'eq-jbl-lsr',
+    name: 'JBL LSR 305/308 Studio Monitor (x1)',
+    slug: 'jbl-lsr-305-308-studio-monitor',
+    brand: 'JBL Professional',
+    model: 'LSR 305/308 Series Powered Studio Monitor (Single Unit)',
+    category: 'Studio Monitors',
+    description: 'High-performance active studio reference monitor equipped with JBL\'s patented Image Control Waveguide for astonishing stereo imaging and deep dynamic range. Dual Class-D amplifiers provide plenty of clean headroom for demanding studio tracking.',
+    dailyPriceZar: 230,
+    weekendPriceZar: 530,
+    depositZar: 750,
+    stockQuantity: 4,
+    availableQuantity: 3,
+    condition: 'Studio Certified - Accurate Acoustic Response',
+    imageUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes power cable, balanced TRS/XLR cables, and acoustic decoupling pad.',
+    specs: {
+      'Waveguide': 'Patented Image Control Waveguide for broad sweet spot',
+      'Amplification': 'Dual integrated Class-D amplifiers (82W)',
+      'HF Driver': '1" Neodymium tweeter with damped woven composite cone',
+      'EQ Trim': 'Boundary EQ switch and HF Trim adjustment',
+      'Inputs': 'Balanced XLR and 1/4" TRS with selectable input sensitivity'
+    },
+    tags: ['Studio Monitor', 'JBL LSR', 'Nearfield', 'Reference Sound', 'Waveguide']
+  },
+  {
+    id: 'eq-pioneer-dm50',
+    name: 'Pioneer DM-50',
+    slug: 'pioneer-dm-50-desktop-monitors',
+    brand: 'Pioneer DJ',
+    model: 'DM-50D 5-inch Desktop Active Monitor Pair',
+    category: 'Studio Monitors',
+    description: 'Versatile 5-inch desktop monitor system that produces balanced bass and crisp highs. Features a two-way sound mode switch: flip between "Production Mode" for a neutral flat frequency response and "DJ Mode" for punchier club low-end.',
+    dailyPriceZar: 240,
+    weekendPriceZar: 560,
+    depositZar: 700,
+    stockQuantity: 3,
+    availableQuantity: 2,
+    condition: 'Like New - Matched Pair with Link Cable',
+    imageUrl: 'https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes left-to-right speaker link cable, power cord, 3.5mm-to-RCA adapter, and rubber bottom cushions.',
+    specs: {
+      'Configuration': 'Pair: Active master speaker with Class-D amp + passive slave',
+      'Woofer': '5" Fiberglass woofer cone with front bass reflex duct',
+      'Tweeter': '3/4" Soft dome tweeter with convex diffusers',
+      'DSP Sound Modes': 'Switchable DJ Mode and Production Mode',
+      'Front Panel': 'Headphone jack output and master volume knob'
+    },
+    tags: ['Desktop Monitor', 'Pioneer DJ', 'Speaker Pair', 'DJ Mode', 'Production']
+  },
+  {
+    id: 'eq-behringer-uphoria',
+    name: 'Behringer U-Phoria Audio Interface',
+    slug: 'behringer-u-phoria-audio-interface',
+    brand: 'Behringer',
+    model: 'U-Phoria UMC204HD / UMC404HD USB Audio Interface',
+    category: 'Audio Interfaces & MIDI',
+    description: 'Audiophile 24-Bit/192 kHz USB audio/MIDI interface loaded with genuine world-class MIDAS mic preamplifiers. Zero-latency direct hardware monitoring, switchable +48V phantom power, analog inserts for hardware compressors, and rock-solid low latency drivers.',
+    dailyPriceZar: 160,
+    weekendPriceZar: 360,
+    depositZar: 500,
+    stockQuantity: 6,
+    availableQuantity: 5,
+    condition: 'Laboratory Inspected - Ultra-Low Noise Floor',
+    imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes USB-B to USB-A cable, power adapter, and two 1/4" balanced patch cables.',
+    specs: {
+      'Pre-Amps': 'MIDAS-designed microphone preamplifiers with +48V phantom power',
+      'Resolution': 'Audiophile 24-Bit / 192 kHz AD/DA resolution',
+      'Monitoring': 'Zero-Latency direct monitoring with A/B monitor selector',
+      'Analog Inserts': 'Hardware analog insert jacks for external outboard FX',
+      'MIDI I/O': '5-Pin DIN MIDI In and Out'
+    },
+    tags: ['Audio Interface', 'Behringer', 'MIDAS Preamps', '24-Bit/192kHz', 'Low Latency']
+  },
+  {
+    id: 'eq-steinberg-midex8',
+    name: 'Steinberg Midex 8',
+    slug: 'steinberg-midex-8',
+    brand: 'Steinberg',
+    model: 'Midex 8 USB 8x8 Hardware MIDI Interface',
+    category: 'Audio Interfaces & MIDI',
+    description: 'Legendary multi-port 8-in / 8-out USB MIDI interface equipped with Steinberg\'s proprietary Linear Time Base (LTB) sub-millisecond hardware timestamping technology. Solves MIDI timing jitter and sync drift across complex multi-synthesizer studio racks.',
+    dailyPriceZar: 190,
+    weekendPriceZar: 440,
+    depositZar: 550,
+    stockQuantity: 2,
+    availableQuantity: 2,
+    condition: 'Vintage Studio Gem - Fully Serviced & Tested',
+    imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes 19" 1U rack ears, power supply, USB cable, and 4x MIDI DIN patch cables.',
+    specs: {
+      'Ports': '8 MIDI Inputs and 8 MIDI Outputs (128 independent MIDI channels)',
+      'Hardware Timing': 'LTB (Linear Time Base) sub-millisecond precision',
+      'Indicators': 'Active signal LEDs for all 16 MIDI ports',
+      'Chassis': '19-inch 1U standard metal rackmount format'
+    },
+    tags: ['MIDI Interface', '8x8 Ports', 'Hardware Synths', 'Steinberg', 'LTB Precision']
+  },
+  {
+    id: 'eq-hybrid-dj-mixer',
+    name: 'Hybrid DJ Mixer',
+    slug: 'hybrid-dj-mixer',
+    brand: 'Hybrid',
+    model: 'Hybrid 4-Channel Club & Performance DJ Mixer',
+    category: 'DJ Gear',
+    description: 'Heavy-duty 4-channel professional DJ mixer engineered for South African clubs and mobile event rigs. Features smooth dual-rail crossfaders, dedicated 3-band kill EQ per channel, dual mic inputs with auto-talkover ducking, and balanced XLR master outputs for massive sound systems.',
+    dailyPriceZar: 270,
+    weekendPriceZar: 620,
+    depositZar: 800,
+    stockQuantity: 4,
+    availableQuantity: 3,
+    condition: 'Club Ready - Smooth Faders & Clean Pots',
+    imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes heavy duty power cable, 2x dual RCA cables, and padded road case.',
+    specs: {
+      'Channels': '4 Audio channels (Phono/Line switchable) + 2 Dedicated Mic channels',
+      'Equalizer': '3-band rotary EQ with -26dB cut / +12dB boost per channel',
+      'Outputs': 'Balanced XLR Master Out, Unbalanced RCA Booth Out, Record Out',
+      'Microphone': 'XLR/Jack combi input with talkover auto-ducking'
+    },
+    tags: ['DJ Mixer', 'Hybrid', '4 Channels', 'Club Rig', 'Balanced XLR'],
+    isFeatured: true
+  },
+  {
+    id: 'eq-keyboard-tripod-bundle',
+    name: 'Keyboard and Tripod (x3 bundles)',
+    slug: 'keyboard-and-tripod-bundle',
+    brand: 'Gravity & Quiklok',
+    model: 'Pro Studio Heavy-Duty Stand Bundle (x3 Packages)',
+    category: 'Studio Bundles',
+    description: 'Complete touring and studio hardware bundle. Each package includes: 1x Heavy-Duty Double-X Quick-Release Keyboard Stand (supports up to 88-key weighted workstations) plus 2x Pneumatic Air-Cushioned Tripod Speaker/Monitor Stands with safety locking pins.',
+    dailyPriceZar: 195,
+    weekendPriceZar: 450,
+    depositZar: 400,
+    stockQuantity: 3,
+    availableQuantity: 3,
+    condition: 'Heavy-Duty Steel - Inspected Safety Pins',
+    imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Bundle package of 3 complete sets: Double-X stand, 2 tripod speaker poles, speaker top-hat plates, and nylon carry bags.',
+    specs: {
+      'Package Includes': '3x Double-X Keyboard Stands + 6x Heavy Duty Tripod Stands',
+      'Weight Capacity': 'Keyboard stand: 65 kg max | Speaker tripods: 45 kg each',
+      'Height Range': 'Keyboard: 64cm to 98cm | Tripods: 110cm to 185cm',
+      'Material': 'Reinforced black powder-coated structural steel'
+    },
+    tags: ['Stand Bundle', 'Tripod', 'Keyboard Stand', 'Hardware', 'Stage Rig']
+  },
+  {
+    id: 'eq-numark-ndx',
+    name: 'Numark NDX500/NDX200 (x2)',
+    slug: 'numark-ndx500-ndx200-pair',
+    brand: 'Numark',
+    model: 'NDX500 / NDX200 Dual CD/USB Media Player Pair (x2 Decks)',
+    category: 'DJ Gear',
+    description: 'Pair of standalone DJ media players that can play from USB flash drives, CDs, and MP3 CDs, as well as act as USB-MIDI controllers for DJ software. Large 5-inch touch-sensitive jog wheels with scratch and search modes, 3 hot cues, and electronic anti-shock buffering.',
+    dailyPriceZar: 320,
+    weekendPriceZar: 750,
+    depositZar: 900,
+    stockQuantity: 2,
+    availableQuantity: 2,
+    condition: 'Tested Dual Decks - Laser Lens Cleaned',
+    imageUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Set of 2 units: 2x power cables, 2x stereo RCA cables, and twin flight case.',
+    specs: {
+      'Media Support': 'USB Flash Drives, Audio CD, CD-R, MP3-CD',
+      'Jog Wheel': '5-inch touch-sensitive jog wheel with vinyl scratch response',
+      'Pitch Control': 'Selectable range: ±4%, ±8%, ±16%, ±100% with Master Tempo',
+      'Interface': 'USB Audio Interface and MIDI controller mode',
+      'Anti-Shock': 'Buffered anti-shock playback memory'
+    },
+    tags: ['DJ Decks', 'Numark NDX', 'Dual Player Pair', 'USB & CD', 'Scratch']
+  },
+  {
+    id: 'eq-pioneer-cdj350',
+    name: 'Pioneer CDJ-350',
+    slug: 'pioneer-cdj-350-digital-deck',
+    brand: 'Pioneer DJ',
+    model: 'CDJ-350 Multi-Format Rekordbox DJ Deck',
+    category: 'DJ Gear',
+    description: 'The industry-standard training deck designed for serious DJs. Fully compatible with Pioneer rekordbox music management software. Features the BEAT Display function for visual tempo matching, Auto Beat Loop, BPM Lock function, and seamless USB / CD playback.',
+    dailyPriceZar: 340,
+    weekendPriceZar: 790,
+    depositZar: 1100,
+    stockQuantity: 3,
+    availableQuantity: 2,
+    condition: 'Pristine Rekordbox Deck - Studio Serviced',
+    imageUrl: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?auto=format&fit=crop&w=1000&q=80',
+    bundleDetails: 'Includes power cable, gold-plated RCA cable, USB cable, and flight case.',
+    specs: {
+      'File Formats': 'AAC, AIFF, MP3 (MPEG-1 32Kbps - 320 Kbps), WAV on USB and CD',
+      'Rekordbox Support': 'Pre-analyze cues and loops exported to USB thumb drives',
+      'BPM Lock': 'One-touch master tempo and master BPM lock',
+      'Frequency Response': '4 Hz - 20 kHz, SNR >115 dB',
+      'Outputs': '1 Analogue Stereo RCA + 1 Control Mini-jack (3.5 mm)'
+    },
+    tags: ['Pioneer DJ', 'CDJ-350', 'Rekordbox', 'Pro DJ Deck', 'Industry Standard'],
+    isFeatured: true
+  }
+];
+
+export const GAUTENG_SUBURBS = [
+  // Johannesburg
+  { name: 'Sandton', city: 'Johannesburg', postalCode: '2196', deliveryFee: 120, transitTime: '45 mins', hub: 'Sandton Central Depot' },
+  { name: 'Rosebank', city: 'Johannesburg', postalCode: '2196', deliveryFee: 120, transitTime: '40 mins', hub: 'Sandton Central Depot' },
+  { name: 'Johannesburg CBD', city: 'Johannesburg', postalCode: '2001', deliveryFee: 140, transitTime: '50 mins', hub: 'Sandton Central Depot' },
+  { name: 'Braamfontein', city: 'Johannesburg', postalCode: '2001', deliveryFee: 130, transitTime: '45 mins', hub: 'Sandton Central Depot' },
+  { name: 'Randburg', city: 'Johannesburg', postalCode: '2194', deliveryFee: 130, transitTime: '50 mins', hub: 'Sandton Central Depot' },
+  { name: 'Fourways', city: 'Johannesburg', postalCode: '2055', deliveryFee: 140, transitTime: '45 mins', hub: 'Midrand Logistics Hub' },
+  { name: 'Roodepoort', city: 'Johannesburg', postalCode: '1724', deliveryFee: 160, transitTime: '60 mins', hub: 'Sandton Central Depot' },
+  { name: 'Soweto (Orlando/Diepkloof)', city: 'Johannesburg', postalCode: '1804', deliveryFee: 180, transitTime: '65 mins', hub: 'Sandton Central Depot' },
+  
+  // Midrand
+  { name: 'Midrand / Waterfall', city: 'Midrand', postalCode: '1685', deliveryFee: 110, transitTime: '30 mins', hub: 'Midrand Logistics Hub' },
+  { name: 'Halfway House', city: 'Midrand', postalCode: '1685', deliveryFee: 110, transitTime: '30 mins', hub: 'Midrand Logistics Hub' },
+  
+  // Pretoria & Centurion
+  { name: 'Centurion', city: 'Pretoria', postalCode: '0157', deliveryFee: 130, transitTime: '40 mins', hub: 'Midrand Logistics Hub' },
+  { name: 'Pretoria East / Menlyn', city: 'Pretoria', postalCode: '0181', deliveryFee: 150, transitTime: '55 mins', hub: 'Pretoria Menlyn Hub' },
+  { name: 'Hatfield', city: 'Pretoria', postalCode: '0083', deliveryFee: 150, transitTime: '55 mins', hub: 'Pretoria Menlyn Hub' },
+  { name: 'Pretoria Central', city: 'Pretoria', postalCode: '0002', deliveryFee: 160, transitTime: '60 mins', hub: 'Pretoria Menlyn Hub' },
+  
+  // East Rand / Ekurhuleni
+  { name: 'Kempton Park / OR Tambo', city: 'Ekurhuleni', postalCode: '1619', deliveryFee: 140, transitTime: '45 mins', hub: 'Midrand Logistics Hub' },
+  { name: 'Bedfordview', city: 'Ekurhuleni', postalCode: '2007', deliveryFee: 130, transitTime: '40 mins', hub: 'Sandton Central Depot' },
+  { name: 'Boksburg', city: 'Ekurhuleni', postalCode: '1459', deliveryFee: 150, transitTime: '55 mins', hub: 'Midrand Logistics Hub' }
+];
+
+export const GAUTENG_HUBS = [
+  {
+    id: 'hub-midrand',
+    name: 'Midrand Logistics & Calibration Hub',
+    address: 'Waterfall Commercial District, K101 & Allandale Rd, Midrand',
+    hours: 'Mon - Sun: 07:30 - 20:00',
+    phone: '+27 11 805 4490'
+  },
+  {
+    id: 'hub-sandton',
+    name: 'Sandton Central Gear Depot',
+    address: '140 West Street, Sandton, Johannesburg',
+    hours: 'Mon - Sun: 08:00 - 19:30',
+    phone: '+27 11 784 1220'
+  },
+  {
+    id: 'hub-menlyn',
+    name: 'Pretoria Menlyn Audio Center',
+    address: 'Menlyn Maine Central Square, Pretoria East',
+    hours: 'Mon - Sat: 08:30 - 18:30',
+    phone: '+27 12 348 9011'
+  }
+];

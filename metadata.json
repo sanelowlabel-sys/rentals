@@ -1,0 +1,6 @@
+{
+  "name": "Gauteng Studio Gear Rentals",
+  "description": "Professional music production, DJ equipment, and studio gear rentals strictly serving Gauteng, South Africa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
