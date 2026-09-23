@@ -1,33 +1,44 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #121212;
-    color: #FFFFFF;
+    font-family: var(--font-sans);
+    background-color: #0f1013;
+    color: #f3f4f6;
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, .font-display {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
   }
 }
 
-/* Custom scrollbar for gear lists and modals */
+/* Custom scrollbar for sleek dark audio aesthetic */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #121212;
+  background: #15171c;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 3px;
+  background: #2b303c;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #E50914;
+  background: #3b4252;
 }
 
+/* Subtle glow utility for audio meters and accents matching logo palette */
+.audio-glow-silver {
+  box-shadow: 0 0 24px -4px rgba(209, 209, 214, 0.25);
+}
+
+.audio-glow-cyan {
+  box-shadow: 0 0 24px -4px rgba(6, 182, 212, 0.25);
+}

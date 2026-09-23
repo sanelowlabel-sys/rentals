@@ -1,136 +1,87 @@
-export type EquipmentCategory = 
-  | 'Synths & FX'
-  | 'Studio Monitors'
-  | 'DJ Gear'
-  | 'Audio Interfaces & MIDI'
-  | 'Studio Bundles'
-  | 'Accessories & DI';
+export type GearCategory = 
+  | 'all' 
+  | 'dj' 
+  | 'microphones' 
+  | 'monitors' 
+  | 'interfaces' 
+  | 'synthesizers' 
+  | 'pa_sound';
 
-export interface Equipment {
+export interface GearItem {
   id: string;
   name: string;
-  slug: string;
   brand: string;
   model: string;
-  category: EquipmentCategory;
+  category: GearCategory;
+  categoryLabel: string;
+  image: string;
+  dailyRate: number; // in ZAR
+  weekendRate: number; // in ZAR
+  weeklyRate: number; // in ZAR
+  deposit: number; // in ZAR
+  inStock: boolean;
+  stockCount: number;
+  featured?: boolean;
+  popular?: boolean;
+  tagline: string;
   description: string;
-  dailyPriceZar: number;
-  weekendPriceZar: number;
-  depositZar: number;
-  stockQuantity: number;
-  availableQuantity: number;
-  condition: string;
-  imageUrl: string;
-  bundleDetails?: string;
-  specs: Record<string, string>;
-  tags: string[];
-  isFeatured?: boolean;
+  specs: string[];
+  includedAccessories: string[];
+  powerRequirement: string;
+  idealFor: string;
 }
 
-export interface User {
+export interface PackageBundle {
   id: string;
-  email: string;
-  fullName: string;
-  phoneNumber?: string;
-  suburb?: string;
-  city?: string;
-  postalCode?: string;
-  streetAddress?: string;
-  rewardCredits: number; // ZAR loyalty credits (SoundCoins)
-  role: 'USER' | 'STUDIO_MANAGER' | 'ADMIN';
-}
-
-export type RentalStatus = 
-  | 'CONFIRMED'
-  | 'PREPARING'
-  | 'OUT_FOR_DELIVERY'
-  | 'DELIVERED'
-  | 'RETURNED'
-  | 'CANCELLED';
-
-export interface TrackingStep {
-  stage: RentalStatus;
-  title: string;
+  name: string;
+  badge: string;
+  tagline: string;
   description: string;
-  location: string;
-  timestamp: string;
-  completed: boolean;
-  active: boolean;
+  image: string;
+  dailyRate: number;
+  weekendRate: number;
+  regularValue: number;
+  savings: number;
+  includedItems: string[];
+  targetAudience: string;
+  features: string[];
 }
 
-export interface RentalOrderItem {
-  equipmentId: string;
-  equipment: Equipment;
+export interface CartItem {
+  gear: GearItem;
   quantity: number;
-  dailyPriceZar: number;
-  totalPriceZar: number;
 }
 
-export interface RentalOrder {
+export interface GautengDeliveryZone {
   id: string;
-  orderNumber: string;
-  userId: string;
-  userName: string;
-  userEmail: string;
-  userPhone: string;
-  status: RentalStatus;
-  deliveryType: 'DELIVERY' | 'HUB_COLLECTION';
+  name: string;
+  area: string;
+  dispatchTimeMins: string;
+  deliveryFee: number; // in ZAR
+  isExpressEligible: boolean;
+  popularLocations: string[];
+}
+
+export interface RentalBookingRequest {
+  id: string;
+  items: CartItem[];
   startDate: string;
-  endDate: string;
-  durationDays: number;
-  dailySubtotalZar: number;
-  deliveryFeeZar: number;
-  discountZar: number;
-  depositTotalZar: number;
-  totalZar: number;
-  paymentMethod: 'PAYFAST' | 'OZOW' | 'CREDIT_CARD' | 'SNAPSCAN';
-  paymentStatus: 'PAID' | 'PENDING';
-  paymentReference: string;
-  // Gauteng destination
+  returnDate: string;
+  totalDays: number;
+  deliveryType: 'delivery' | 'pickup';
+  deliveryZoneId: string;
   deliveryAddress: string;
-  deliverySuburb: string;
-  deliveryCity: string;
-  deliveryPostalCode: string;
-  deliveryInstructions?: string;
-  hubLocation?: string;
-  // Dispatch details
-  courierName: string;
-  driverName?: string;
-  driverPhone?: string;
-  vehiclePlate?: string;
-  currentLocationLat?: number;
-  currentLocationLng?: number;
-  estimatedDeliveryTime?: string;
-  items: RentalOrderItem[];
-  timeline: TrackingStep[];
-  currentStageIndex: number;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface WishlistItem {
-  id: string;
-  userId: string;
-  equipmentId: string;
-  equipment: Equipment;
-  addedAt: string;
-}
-
-export interface GautengLocationValidation {
-  valid: boolean;
-  suburb: string;
-  city: string;
-  postalCode: string;
-  deliveryFeeZar: number;
-  estimatedTransitTime: string;
-  hubSource: string;
-  message?: string;
-}
-
-export interface DashboardStats {
-  activeRentalsCount: number;
-  totalRentalsCount: number;
-  rewardCreditsZar: number;
-  wishlistCount: number;
-  nextScheduledReturn?: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail: string;
+  identificationType: 'sa_id' | 'passport';
+  idNumber: string;
+  productionNameOrCompany?: string;
+  requiresLoadSheddingPack: boolean;
+  notes?: string;
+  subtotal: number;
+  deliveryFee: number;
+  depositTotal: number;
+  grandTotal: number;
+  status: 'draft' | 'submitted' | 'confirmed';
 }

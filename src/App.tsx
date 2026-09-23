@@ -1,404 +1,250 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Navbar 
-} from './components/Navbar.tsx';
-import { 
-  RegionalBanner 
-} from './components/RegionalBanner.tsx';
-import { 
-  Storefront 
-} from './components/Storefront.tsx';
-import { 
-  WishlistView 
-} from './components/WishlistView.tsx';
-import { 
-  CheckoutWizard 
-} from './components/CheckoutWizard.tsx';
-import { 
-  LiveTrackingView 
-} from './components/LiveTrackingView.tsx';
-import { 
-  UserDashboard 
-} from './components/UserDashboard.tsx';
-import { 
-  GearModal 
-} from './components/GearModal.tsx';
-import { 
-  AuthModal 
-} from './components/AuthModal.tsx';
-import { 
-  HubsModal 
-} from './components/HubsModal.tsx';
-import { 
-  Equipment, 
-  RentalOrder, 
-  User 
-} from './types.ts';
-import { 
-  INITIAL_EQUIPMENT 
-} from './data/equipmentData.ts';
-import { 
-  ShieldCheck, 
-  MapPin, 
-  Disc3, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Radio, 
-  Truck 
-} from 'lucide-react';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { CuratedPackagesSection } from './components/CuratedPackagesSection';
+import { GearCatalogSection } from './components/GearCatalogSection';
+import { GearDetailModal } from './components/GearDetailModal';
+import { GautengLogisticsSection } from './components/GautengLogisticsSection';
+import { HowItWorksSection } from './components/HowItWorksSection';
+import { FAQSection } from './components/FAQSection';
+import { Footer } from './components/Footer';
+import { RentalCartDrawer } from './components/RentalCartDrawer';
+import { QuoteSummaryModal } from './components/QuoteSummaryModal';
+import { GEAR_INVENTORY, CURATED_PACKAGES } from './data/gearData';
+import { GearItem, GearCategory, CartItem, PackageBundle } from './types';
+import { Check, ShoppingBag, ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'storefront' | 'wishlist' | 'tracking' | 'dashboard'>('storefront');
-  const [equipmentList, setEquipmentList] = useState<Equipment[]>(INITIAL_EQUIPMENT);
-  const [wishlistIds, setWishlistIds] = useState<Set<string>>(new Set(['eq-korg-kaossilator', 'eq-yamaha-hs8']));
-  const [orders, setOrders] = useState<RentalOrder[]>([]);
-  const [selectedTrackingOrderId, setSelectedTrackingOrderId] = useState<string | undefined>(undefined);
-  
-  // Modals & Flows
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isHubsModalOpen, setIsHubsModalOpen] = useState(false);
-  const [quickViewItem, setQuickViewItem] = useState<Equipment | null>(null);
-  const [checkoutItems, setCheckoutItems] = useState<{ equipment: Equipment; quantity: number }[] | null>(null);
-  
-  // Feedback toast
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    // Check localStorage for persisted cart if any
+    try {
+      const saved = localStorage.getItem('gauteng_gear_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3000);
-  };
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<GearCategory>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [specsModalGear, setSpecsModalGear] = useState<GearItem | null>(null);
+  const [activeQuote, setActiveQuote] = useState<any | null>(null);
+  const [showToast, setShowToast] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  // Initial load from server API
+  // Save cart changes to localStorage
   useEffect(() => {
-    fetchInitialData();
+    try {
+      localStorage.setItem('gauteng_gear_cart', JSON.stringify(cart));
+    } catch {
+      // ignore
+    }
+  }, [cart]);
+
+  // Scroll listener for back-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const fetchInitialData = async () => {
-    try {
-      // 1. Fetch user session
-      const authRes = await fetch('/api/auth/me');
-      const authData = await authRes.json();
-      if (authData.user) {
-        setCurrentUser(authData.user);
-      }
-
-      // 2. Fetch equipment inventory
-      const eqRes = await fetch('/api/equipment');
-      const eqData = await eqRes.json();
-      if (eqData.equipment && eqData.equipment.length > 0) {
-        setEquipmentList(eqData.equipment);
-      }
-
-      // 3. Fetch wishlist
-      const wishRes = await fetch('/api/wishlist');
-      const wishData = await wishRes.json();
-      if (wishData.wishlist) {
-        setWishlistIds(new Set(wishData.wishlist.map((item: Equipment) => item.id)));
-      }
-
-      // 4. Fetch user rentals
-      const rentRes = await fetch('/api/rentals');
-      const rentData = await rentRes.json();
-      if (rentData.rentals) {
-        setOrders(rentData.rentals);
-        if (rentData.rentals.length > 0) {
-          setSelectedTrackingOrderId(rentData.rentals[0].id);
-        }
-      }
-    } catch (err) {
-      console.warn('Backend API warming up, using local fallback state:', err);
-    }
+  const triggerToast = (msg: string) => {
+    setShowToast(msg);
+    setTimeout(() => {
+      setShowToast(null);
+    }, 2800);
   };
 
-  const refreshOrders = async () => {
-    try {
-      const res = await fetch('/api/rentals', {
-        headers: {
-          'Authorization': `Bearer ${currentUser?.email || 'SanelowLabel@gmail.com'}`
-        }
-      });
-      const data = await res.json();
-      if (data.rentals) {
-        setOrders(data.rentals);
+  const handleAddToCart = (gear: GearItem) => {
+    setCart((prev) => {
+      const existing = prev.find((item) => item.gear.id === gear.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.gear.id === gear.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
       }
-    } catch (err) {
-      console.error('Failed to reload orders:', err);
-    }
+      return [...prev, { gear, quantity: 1 }];
+    });
+    triggerToast(`Added ${gear.name} to booking cart`);
   };
 
-  // Wishlist Toggle
-  const handleToggleWishlist = async (equipmentId: string) => {
-    const nextSet = new Set(wishlistIds);
-    let added = false;
-    if (nextSet.has(equipmentId)) {
-      nextSet.delete(equipmentId);
-      added = false;
+  const handleAddPackageToCart = (pkg: PackageBundle) => {
+    // Map bundle items to matching inventory gear or add corresponding gear items
+    let addedCount = 0;
+    pkg.includedItems.forEach((desc) => {
+      // Find matching item from inventory
+      const match = GEAR_INVENTORY.find((g) =>
+        desc.toLowerCase().includes(g.brand.toLowerCase()) ||
+        desc.toLowerCase().includes(g.model.toLowerCase())
+      );
+
+      if (match) {
+        setCart((prev) => {
+          const existing = prev.find((item) => item.gear.id === match.id);
+          if (existing) {
+            return prev.map((item) =>
+              item.gear.id === match.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+          }
+          return [...prev, { gear: match, quantity: 1 }];
+        });
+        addedCount++;
+      }
+    });
+
+    // If no direct matches, add the top flagship for this category
+    if (addedCount === 0 && GEAR_INVENTORY.length > 0) {
+      handleAddToCart(GEAR_INVENTORY[0]);
     } else {
-      nextSet.add(equipmentId);
-      added = true;
-    }
-    setWishlistIds(nextSet);
-
-    const item = equipmentList.find(e => e.id === equipmentId);
-    if (added) {
-      showToast(`Added ${item?.name || 'Item'} to Gear Cart`);
-    } else {
-      showToast(`Removed from Gear Cart`);
-    }
-
-    try {
-      await fetch('/api/wishlist/toggle', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${currentUser?.email || 'SanelowLabel@gmail.com'}`
-        },
-        body: JSON.stringify({ equipmentId })
-      });
-    } catch (err) {
-      console.error('Failed to sync wishlist with server:', err);
+      triggerToast(`Loaded "${pkg.name}" components into your cart!`);
     }
   };
 
-  // Trigger Checkout for single item
-  const handleSelectForRental = (item: Equipment) => {
-    setCheckoutItems([{ equipment: item, quantity: 1 }]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleUpdateQuantity = (gearId: string, delta: number) => {
+    setCart((prev) => {
+      return prev
+        .map((item) => {
+          if (item.gear.id === gearId) {
+            const newQty = item.quantity + delta;
+            return newQty > 0 ? { ...item, quantity: newQty } : null;
+          }
+          return item;
+        })
+        .filter(Boolean) as CartItem[];
+    });
   };
 
-  // Trigger Checkout from Wishlist / Cart
-  const handleProceedToCheckoutFromWishlist = (items: { equipment: Equipment; quantity: number }[]) => {
-    setCheckoutItems(items);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleRemoveItem = (gearId: string) => {
+    setCart((prev) => prev.filter((item) => item.gear.id !== gearId));
   };
 
-  // Order completed handler
-  const handleOrderCompleted = (newOrder: RentalOrder) => {
-    setOrders(prev => [newOrder, ...prev]);
-    setSelectedTrackingOrderId(newOrder.id);
-    setCheckoutItems(null);
-    setActiveTab('tracking');
-    showToast(`Order ${newOrder.orderNumber} confirmed! Tracking driver in Gauteng...`);
-    // Refresh equipment stock levels
-    fetchInitialData();
+  const handleClearCart = () => {
+    setCart([]);
   };
 
-  const handleLogout = () => {
-    setCurrentUser(null);
-    showToast('Signed out of session');
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
-
-  const wishlistEquipment = equipmentList.filter(item => wishlistIds.has(item.id));
-  const activeOrders = orders.filter(o => ['CONFIRMED', 'PREPARING', 'OUT_FOR_DELIVERY'].includes(o.status));
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white flex flex-col selection:bg-[#E50914] selection:text-white">
-      
-      {/* Toast notification */}
-      {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#181818] border border-[#E50914] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs animate-slide-up">
-          <Radio className="w-4 h-4 text-[#E50914] animate-pulse" />
-          <span>{toastMessage}</span>
+    <div className="min-h-screen bg-[#0f1013] text-zinc-100 flex flex-col selection:bg-zinc-200 selection:text-zinc-950">
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-zinc-900 border border-zinc-600 text-white px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md animate-bounce">
+          <div className="w-6 h-6 rounded-full bg-zinc-100 text-zinc-950 flex items-center justify-center font-bold">
+            <Check className="w-3.5 h-3.5 stroke-[3]" />
+          </div>
+          <span className="text-xs font-semibold">{showToast}</span>
         </div>
       )}
 
-      {/* Navigation Header */}
+      {/* Navigation */}
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={(tab) => {
-          setCheckoutItems(null);
-          setActiveTab(tab);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        wishlistCount={wishlistIds.size}
-        activeOrdersCount={activeOrders.length}
-        currentUser={currentUser}
-        onOpenAuth={() => setIsAuthModalOpen(true)}
-        onLogout={handleLogout}
-        onOpenHubsModal={() => setIsHubsModalOpen(true)}
+        cart={cart}
+        onOpenCart={() => setIsCartOpen(true)}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onNavigateSection={scrollToSection}
       />
 
-      {/* Regional Operational Notice Banner */}
-      <RegionalBanner onOpenHubsModal={() => setIsHubsModalOpen(true)} />
+      {/* Main Page Sections */}
+      <main className="flex-1">
+        <Hero
+          onSelectCategory={setSelectedCategory}
+          onOpenCart={() => setIsCartOpen(true)}
+          onScrollToCatalog={() => scrollToSection('catalog')}
+        />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        
-        {checkoutItems ? (
-          /* Active Checkout Wizard Flow */
-          <CheckoutWizard
-            selectedItems={checkoutItems}
-            currentUser={currentUser}
-            onOrderCompleted={handleOrderCompleted}
-            onCancel={() => setCheckoutItems(null)}
-          />
-        ) : (
-          /* Standard View Tabs */
-          <>
-            {activeTab === 'storefront' && (
-              <Storefront
-                equipmentList={equipmentList}
-                wishlistIds={wishlistIds}
-                onToggleWishlist={handleToggleWishlist}
-                onQuickView={(item) => setQuickViewItem(item)}
-                onSelectForRental={handleSelectForRental}
-              />
-            )}
+        <CuratedPackagesSection
+          packages={CURATED_PACKAGES}
+          onAddPackageToCart={handleAddPackageToCart}
+          onOpenCart={() => setIsCartOpen(true)}
+        />
 
-            {activeTab === 'wishlist' && (
-              <WishlistView
-                wishlistItems={wishlistEquipment}
-                onRemoveItem={handleToggleWishlist}
-                onProceedToCheckout={handleProceedToCheckoutFromWishlist}
-                onExploreCatalog={() => setActiveTab('storefront')}
-              />
-            )}
+        <GearCatalogSection
+          inventory={GEAR_INVENTORY}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          cart={cart}
+          onAddToCart={handleAddToCart}
+          onOpenSpecsModal={setSpecsModalGear}
+          onOpenCart={() => setIsCartOpen(true)}
+        />
 
-            {activeTab === 'tracking' && (
-              <LiveTrackingView
-                orders={orders}
-                selectedOrderId={selectedTrackingOrderId}
-                onRefreshOrders={refreshOrders}
-                onSelectOrder={(id) => setSelectedTrackingOrderId(id)}
-              />
-            )}
+        <GautengLogisticsSection />
 
-            {activeTab === 'dashboard' && (
-              <UserDashboard
-                currentUser={currentUser}
-                orders={orders}
-                wishlistCount={wishlistIds.size}
-                onTrackOrder={(id) => {
-                  setSelectedTrackingOrderId(id);
-                  setActiveTab('tracking');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                onExploreCatalog={() => setActiveTab('storefront')}
-                onOpenHubsModal={() => setIsHubsModalOpen(true)}
-              />
-            )}
-          </>
-        )}
+        <HowItWorksSection
+          onBrowseCatalog={() => scrollToSection('catalog')}
+        />
 
+        <FAQSection />
       </main>
 
-      {/* Detail Specifications Modal */}
-      <GearModal
-        item={quickViewItem}
-        onClose={() => setQuickViewItem(null)}
-        isWishlisted={quickViewItem ? wishlistIds.has(quickViewItem.id) : false}
-        onToggleWishlist={handleToggleWishlist}
-        onSelectForRental={(item) => {
-          setQuickViewItem(null);
-          handleSelectForRental(item);
-        }}
-      />
+      {/* Footer */}
+      <Footer onNavigateSection={scrollToSection} />
 
-      {/* Authentication Modal */}
-      <AuthModal
-        isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
-        onLoginSuccess={(user) => {
-          setCurrentUser(user);
-          showToast(`Welcome, ${user.fullName}`);
-          fetchInitialData();
-        }}
-      />
-
-      {/* Gauteng Hubs Directory Modal */}
-      <HubsModal
-        isOpen={isHubsModalOpen}
-        onClose={() => setIsHubsModalOpen(false)}
-      />
-
-      {/* Regional Footer */}
-      <footer className="bg-[#141414] border-t border-[#262626] mt-12 py-10 text-xs text-[#888888]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Brand column */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#E50914] flex items-center justify-center text-white">
-                  <Disc3 className="w-5 h-5" />
-                </div>
-                <span className="font-display font-bold text-lg text-white">
-                  GAUTENG<span className="text-[#E50914]">GEAR</span>
-                </span>
-              </div>
-              <p className="text-xs text-[#999999] leading-relaxed">
-                Dedicated professional music and studio production equipment rental service engineered exclusively for producers, recording studios, and live performers across Gauteng Province, South Africa.
-              </p>
-              <div className="flex items-center gap-2 text-emerald-400 font-semibold text-[11px]">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Strictly Gauteng Insured Operations</span>
-              </div>
+      {/* Floating Bottom Cart Bar for Mobile when items present */}
+      {cart.length > 0 && !isCartOpen && (
+        <div className="fixed bottom-4 left-4 right-4 sm:hidden z-30">
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="w-full py-3.5 px-5 rounded-2xl bg-zinc-100 text-zinc-950 font-black text-xs tracking-wider uppercase flex items-center justify-between shadow-2xl shadow-white/10 active:scale-95 cursor-pointer"
+          >
+            <div className="flex items-center gap-2">
+              <ShoppingBag className="w-4 h-4" />
+              <span>Review Rental Manifest ({cart.reduce((s, i) => s + i.quantity, 0)})</span>
             </div>
-
-            {/* Service Hubs */}
-            <div className="space-y-2.5">
-              <p className="font-bold text-white text-xs uppercase tracking-wider">
-                Gauteng Hub Network
-              </p>
-              <ul className="space-y-1.5 text-[11px] text-[#B3B3B3]">
-                <li>• Midrand Logistics & Calibration Hub</li>
-                <li>• Sandton West Street Gear Depot</li>
-                <li>• Pretoria Menlyn Audio Center</li>
-                <li>• Johannesburg CBD Rapid Dispatch</li>
-              </ul>
-            </div>
-
-            {/* Gauteng Delivery Coverage */}
-            <div className="space-y-2.5">
-              <p className="font-bold text-white text-xs uppercase tracking-wider">
-                Supported Delivery Zones
-              </p>
-              <ul className="space-y-1.5 text-[11px] text-[#B3B3B3]">
-                <li>• Johannesburg (Rosebank, Sandton, CBD, Soweto)</li>
-                <li>• Pretoria East, Hatfield & Centurion</li>
-                <li>• Midrand, Waterfall & Halfway House</li>
-                <li>• Ekurhuleni (Kempton Park, Boksburg, Bedfordview)</li>
-              </ul>
-            </div>
-
-            {/* South African Support */}
-            <div className="space-y-2.5">
-              <p className="font-bold text-white text-xs uppercase tracking-wider">
-                Gauteng Dispatch Hotline
-              </p>
-              <div className="space-y-2 text-[11px] text-[#B3B3B3]">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#E50914]" />
-                  <span>+27 11 805 4490 (24/7 Studio Tech)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-[#E50914]" />
-                  <span>dispatch@gautenggear.co.za</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-[#E50914]" />
-                  <span>Dispatch: Mon - Sun 07:00 - 21:00</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-6 border-t border-[#222222] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#666666]">
-            <p>
-              © 2026 Gauteng Studio Gear Rentals (Pty) Ltd. Registered in South Africa. All currency in ZAR (Rand).
-            </p>
-            <p className="flex items-center gap-2">
-              <span>PayFast SA & Ozow Instant EFT Certified</span>
-              <span>•</span>
-              <span className="text-[#888888]">Operations strictly limited to Gauteng Province</span>
-            </p>
-          </div>
-
+            <span>View Cart →</span>
+          </button>
         </div>
-      </footer>
+      )}
 
+      {/* Back to top button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 left-6 z-30 p-2.5 rounded-full bg-zinc-900/90 text-zinc-400 hover:text-white border border-white/10 hover:border-zinc-400 shadow-lg backdrop-blur-sm transition-all cursor-pointer"
+          title="Scroll to top"
+        >
+          <ArrowUp className="w-4 h-4" />
+        </button>
+      )}
+
+      {/* Specs Detail Modal */}
+      <GearDetailModal
+        gear={specsModalGear}
+        onClose={() => setSpecsModalGear(null)}
+        onAddToCart={handleAddToCart}
+        onOpenCart={() => setIsCartOpen(true)}
+      />
+
+      {/* Cart & Quote Calculator Drawer */}
+      <RentalCartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cart={cart}
+        onUpdateQuantity={handleUpdateQuantity}
+        onRemoveItem={handleRemoveItem}
+        onClearCart={handleClearCart}
+        onOpenQuoteModal={(quoteDetails) => {
+          setActiveQuote(quoteDetails);
+          setIsCartOpen(false);
+        }}
+      />
+
+      {/* Official Tax Quote Modal */}
+      <QuoteSummaryModal
+        quote={activeQuote}
+        onClose={() => setActiveQuote(null)}
+      />
     </div>
   );
 }
