@@ -279,6 +279,7 @@ export const RentalCartDrawer: React.FC<RentalCartDrawerProps> = ({
                     <img
                       src={gear.image}
                       alt={gear.name}
+                      referrerPolicy="no-referrer"
                       className="w-16 h-16 rounded-lg object-cover bg-zinc-950 shrink-0"
                     />
 

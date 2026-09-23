@@ -44,27 +44,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateSection }) => {
             <ul className="space-y-2">
               <li>
                 <button onClick={() => onNavigateSection('catalog')} className="hover:text-white transition-colors cursor-pointer">
-                  Pioneer DJ Rigs & CDJs
+                  Korg Synths, Volcas & Kaoss Pads
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateSection('catalog')} className="hover:text-white transition-colors cursor-pointer">
-                  Neumann Studio Microphones
+                  Pioneer CDJ-350 & Hybrid Mixers
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateSection('catalog')} className="hover:text-white transition-colors cursor-pointer">
-                  Genelec & Yamaha Monitors
+                  Yamaha HS8 & JBL Studio Monitors
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateSection('catalog')} className="hover:text-white transition-colors cursor-pointer">
-                  Universal Audio Interfaces
+                  Behringer Interfaces & DBBox Testers
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateSection('catalog')} className="hover:text-white transition-colors cursor-pointer">
-                  Moog & Nord Synthesizers
+                  Keyboard & Tripod Stand Bundles
                 </button>
               </li>
             </ul>

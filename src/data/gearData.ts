@@ -1,7 +1,21 @@
 import { GearItem, PackageBundle, GautengDeliveryZone } from '../types';
-import djRigImg from '../assets/images/dj_rig_cdj_setup_1789487873869.jpg';
-import micSuiteImg from '../assets/images/studio_mic_suite_1789487888689.jpg';
-import monitorsSynthImg from '../assets/images/studio_monitors_synth_1789487904903.jpg';
+
+import korgKaossilatorImg from '../assets/images/korg_kaossilator_1790128433007.jpg';
+import korgKaossPadImg from '../assets/images/korg_kaoss_pad_1790128444314.jpg';
+import korgVolcaFmImg from '../assets/images/korg_volca_fm_1790128455238.jpg';
+import korgVolcaKeysImg from '../assets/images/korg_volca_keys_1790128466396.jpg';
+import korgVolcaBassImg from '../assets/images/korg_volca_bass_1790128476378.jpg';
+import dbboxTesterImg from '../assets/images/dbbox_tester_1790128488175.jpg';
+import akaiMax49Img from '../assets/images/akai_max49_1790128501126.jpg';
+import yamahaHs8Img from '../assets/images/yamaha_hs8_1790128512039.jpg';
+import jblLsrMonitorImg from '../assets/images/jbl_lsr_monitor_1790128521609.jpg';
+import pioneerDm50Img from '../assets/images/pioneer_dm50_1790128531585.jpg';
+import behringerUphoriaImg from '../assets/images/behringer_uphoria_1790128541538.jpg';
+import steinbergMidex8Img from '../assets/images/steinberg_midex8_1790128552071.jpg';
+import hybridDjMixerImg from '../assets/images/hybrid_dj_mixer_1790128562818.jpg';
+import standsTripodBundleImg from '../assets/images/stands_tripod_bundle_1790128574641.jpg';
+import numarkNdxPlayersImg from '../assets/images/numark_ndx_players_1790128586753.jpg';
+import pioneerCdj350Img from '../assets/images/pioneer_cdj350_1790128597243.jpg';
 
 export const GAUTENG_ZONES: GautengDeliveryZone[] = [
   {
@@ -79,582 +93,678 @@ export const GAUTENG_ZONES: GautengDeliveryZone[] = [
 ];
 
 export const GEAR_INVENTORY: GearItem[] = [
-  // --- DJ GEAR ---
+  // 1. Korg Kaossilator
   {
-    id: 'pioneer-cdj-3000',
-    name: 'Pioneer CDJ-3000 Flagship Multi Player',
-    brand: 'Pioneer DJ',
-    model: 'CDJ-3000',
-    category: 'dj',
-    categoryLabel: 'DJ Equipment',
-    image: djRigImg,
-    dailyRate: 950,
-    weekendRate: 1650,
-    weeklyRate: 3800,
-    deposit: 3000,
-    inStock: true,
-    stockCount: 8,
-    featured: true,
-    popular: true,
-    tagline: 'The undisputed worldwide club & festival standard',
-    description: 'Advanced MPU micro-processing unit, 9-inch high-definition touch screen, Touch Preview, Key Sync, and the smoothest jog wheel ever engineered. The absolute gold standard for Amapiano, House, and Electronic DJs in South Africa.',
-    specs: ['9-inch Touchscreen with Touch Cue', 'Gigabit Pro DJ Link', '32-bit/96kHz D/A Audio Processing', '8 Dedicated Hot Cue Buttons', 'Heavy Duty Custom Road Flightcase'],
-    includedAccessories: ['Swan Pro Flightcase', 'AudioQuest RCA cables', 'Cat6 shielded network link cable', 'IEC lockable power cord', 'SanDisk 64GB USB stick'],
-    powerRequirement: '220V - 240V SA 3-pin plug (Surge-protected)',
-    idealFor: 'Festival headline slots, premier Gauteng club gigs, VIP private events'
-  },
-  {
-    id: 'pioneer-djm-a9',
-    name: 'Pioneer DJM-A9 4-Channel Professional Mixer',
-    brand: 'Pioneer DJ',
-    model: 'DJM-A9',
-    category: 'dj',
-    categoryLabel: 'DJ Equipment',
-    image: djRigImg,
-    dailyRate: 1050,
-    weekendRate: 1850,
-    weeklyRate: 4200,
-    deposit: 3500,
-    inStock: true,
-    stockCount: 6,
-    featured: true,
-    popular: true,
-    tagline: 'Next-generation club standard with ESS 32-bit converters',
-    description: 'Breathtaking clarity with ESS Technology 32-bit converters, redesigned Sound Color FX with center lock, dual independent headphone outputs for seamless DJ back-to-back sets, and high-performance Bluetooth input.',
-    specs: ['4 Channels with ESS 32-bit A/D converters', 'Center Lock Sound Color FX', 'Dual independent headphone systems', 'Phantom-powered dedicated mic section', 'USB-A and USB-C dual laptop inputs'],
-    includedAccessories: ['Custom foam flightcase', 'Shielded XLR master output cables (5m)', 'IEC power cord', 'Gold RCA lines'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Amapiano club residencies, touring international DJs, festival stages'
-  },
-  {
-    id: 'pioneer-xdj-xz',
-    name: 'Pioneer XDJ-XZ All-In-One 4-Channel DJ System',
-    brand: 'Pioneer DJ',
-    model: 'XDJ-XZ',
-    category: 'dj',
-    categoryLabel: 'DJ Equipment',
-    image: 'https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 1450,
-    weekendRate: 2450,
-    weeklyRate: 5400,
-    deposit: 4000,
-    inStock: true,
-    stockCount: 4,
-    featured: false,
-    popular: true,
-    tagline: 'All-in-one powerhouse with full-size CDJ jog wheels',
-    description: 'Full-size mechanical jog wheels with color On-Jog Display, standalone 2-channel playback + 2 external channels for turntables or laptops, 14 Beat FX, and 6 Sound Color FX. Ideal for high-end wedding gigs and pop-up events.',
-    specs: ['Full-size mechanical jog wheels with LCD', '4-channel mixer with feedback reducer', 'Stand-alone USB & Rekordbox/Serato DJ Pro support', 'XLR Master and Booth outputs'],
-    includedAccessories: ['Wheeled hard flightcase', 'Heavy duty table stand', 'XLR patch cables', 'Power supply'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Sandton corporate launches, mobile DJs, private penthouse events'
-  },
-  {
-    id: 'technics-sl1210-mk7',
-    name: 'Technics SL-1210MK7 Direct Drive Turntable Pair',
-    brand: 'Technics',
-    model: 'SL-1210MK7 (Pair)',
-    category: 'dj',
-    categoryLabel: 'DJ Equipment',
-    image: 'https://images.unsplash.com/photo-1541689592655-f5f52825a3b8?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 1200,
-    weekendRate: 2100,
-    weeklyRate: 4600,
-    deposit: 3500,
-    inStock: true,
-    stockCount: 2,
-    featured: false,
-    popular: false,
-    tagline: 'The timeless vinyl legend, remastered for modern performance',
-    description: 'Coreless direct-drive motor eliminating cogging, torque and brake speed adjustments, reverse play function, and high-rigidity cabinet. Comes paired with Ortofon Concorde MKII Club cartridges.',
-    specs: ['Coreless direct drive motor', 'Pitch range ±8% / ±16%', 'Detachable phono & ground terminals', 'Includes 2x Ortofon Concorde MKII Club needles'],
-    includedAccessories: ['2x Flightcases', '2x Ortofon Cartridges & Stylus brush', 'Slipmats', 'Target lights'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Pure vinyl selectors, deep house sets, hip-hop turntablism'
-  },
-
-  // --- STUDIO MICROPHONES ---
-  {
-    id: 'neumann-u87-ai',
-    name: 'Neumann U87 Ai Studio Large-Diaphragm Condenser',
-    brand: 'Neumann',
-    model: 'U87 Ai Nickel',
-    category: 'microphones',
-    categoryLabel: 'Studio Microphones',
-    image: micSuiteImg,
-    dailyRate: 980,
-    weekendRate: 1750,
-    weeklyRate: 3900,
-    deposit: 3500,
+    id: 'korg-kaossilator',
+    name: 'Korg Kaossilator Dynamic Phrase Synthesizer',
+    brand: 'Korg',
+    model: 'Kaossilator Loop Recorder',
+    category: 'synthesizers',
+    categoryLabel: 'Synths & Samplers',
+    image: korgKaossilatorImg,
+    dailyRate: 250,
+    weekendRate: 420,
+    weeklyRate: 980,
+    deposit: 900,
     inStock: true,
     stockCount: 5,
     featured: true,
     popular: true,
-    tagline: 'The most iconic vocal microphone in recorded music history',
-    description: 'Renowned for its silky high-end presence, balanced midrange, and authoritative low end. The world benchmark for vocal tracking, voiceover, and acoustic instrument capture. Housed in a custom wooden jeweler box with EA 87 shockmount.',
-    specs: ['K 67 dual-diaphragm capsule', 'Omnidirectional, Cardioid, Figure-8 patterns', '10dB pre-attenuation pad', 'Low-cut roll-off filter', 'Max SPL 127dB'],
-    includedAccessories: ['Neumann EA 87 Elastic Suspension shockmount', 'Neumann wooden jewel box', 'Aston Halo portable vocal acoustic reflection filter', 'Mogami Gold Studio 6m XLR cable'],
-    powerRequirement: '48V Phantom Power required',
-    idealFor: 'Lead vocal tracking, major label album recordings, high-end commercial voiceover'
+    tagline: 'Dynamic phrase synthesizer & realtime loop recorder with tactile touchpad',
+    description: 'Intuitive touchpad synthesizer allowing producers and live performers to create musical phrases effortlessly by stroking or tapping the touch pad. Built-in phrase loop recorder lets you layer multiple phrases with unlimited overdubs to build hypnotic grooves on the fly.',
+    specs: [
+      '100 Diverse Sound Programs (Leads, Acoustic, Bass, Chords, SE, Drums)',
+      'Built-in Phrase Loop Recorder with Layered Overdubbing',
+      '31 Musical Scale and Key Settings for instant harmonic lock',
+      'Dual RCA Audio Line Output and 3.5mm Headphone Jack',
+      'Gate Arpeggiator with 50 customizable rhythmic patterns'
+    ],
+    includedAccessories: [
+      'Protective padded travel pouch',
+      'High-grade stereo RCA to 3.5mm audio lead',
+      'Dedicated power supply unit + backup industrial AA batteries'
+    ],
+    powerRequirement: '9V DC adapter (supplied) or 4x AA batteries',
+    idealFor: 'Live electronic performances, impromptu beatmaking jams, studio ear-candy fills'
   },
+
+  // 2. Korg Kaoss Pad KP3
   {
-    id: 'neumann-tlm-103',
-    name: 'Neumann TLM 103 Large-Diaphragm Studio Microphone',
-    brand: 'Neumann',
-    model: 'TLM 103 Matte Black',
-    category: 'microphones',
-    categoryLabel: 'Studio Microphones',
-    image: micSuiteImg,
-    dailyRate: 550,
-    weekendRate: 950,
-    weeklyRate: 2200,
-    deposit: 2000,
+    id: 'korg-kaoss-pad-kp3',
+    name: 'Korg Kaoss Pad KP3 Dynamic Effects Processor & Sampler',
+    brand: 'Korg',
+    model: 'KP3 Performance Effects Unit',
+    category: 'dj',
+    categoryLabel: 'DJ FX & Samplers',
+    image: korgKaossPadImg,
+    dailyRate: 350,
+    weekendRate: 590,
+    weeklyRate: 1400,
+    deposit: 1200,
+    inStock: true,
+    stockCount: 4,
+    featured: true,
+    popular: true,
+    tagline: 'Legendary realtime X-Y dynamic effects processor & 4-bank phrase sampler',
+    description: 'The global benchmark performance effects unit for DJs, electronic producers, and live sound sculptors. Features an illuminated red LED X-Y touchpad controlling 128 dynamic effects, 4 dedicated sample bank buttons, and USB MIDI synchronization for club and festival stages.',
+    specs: [
+      '128 Performance Effect Programs (Grain Shifters, Vinyl Breaks, Delays, Filters)',
+      '4 Dedicated Sample Flash Buttons with instant loop playback',
+      'Auto BPM Detection, Tap Tempo, and MIDI clock sync',
+      'SD Memory Card slot for rapid sound library loading & saving',
+      'Touchpad Mute & FX Release functions for seamless transitions'
+    ],
+    includedAccessories: [
+      'Original Korg 12V DC power adapter',
+      '2x Dual Gold-plated RCA audio cables',
+      'High-speed SD Card pre-formatted with sample loops',
+      'Custom foam-lined road flightcase'
+    ],
+    powerRequirement: '12V DC power adapter (included with SA plug)',
+    idealFor: 'Amapiano & club DJ sets, live remixing, vocal looping, hardware synth FX chains'
+  },
+
+  // 3. Korg Volca FM
+  {
+    id: 'korg-volca-fm',
+    name: 'Korg Volca FM 3-Voice Digital FM Synthesizer',
+    brand: 'Korg',
+    model: 'Volca FM (DX7 Compatible)',
+    category: 'synthesizers',
+    categoryLabel: 'Synthesizers & Keys',
+    image: korgVolcaFmImg,
+    dailyRate: 220,
+    weekendRate: 370,
+    weeklyRate: 850,
+    deposit: 750,
+    inStock: true,
+    stockCount: 4,
+    featured: false,
+    popular: true,
+    tagline: 'True 6-operator digital FM sound engine with full Yamaha DX7 patch compatibility',
+    description: 'Compact 3-voice digital FM synthesizer that accurately reproduces the classic sound engine of the historic Yamaha DX7. Equipped with an intuitive interface that makes complex FM editing accessible, 16-step motion sequencer, and onboard chorus effect.',
+    specs: [
+      'True 6-Operator FM synthesis engine with 32 classic algorithms',
+      'Full compatibility with Yamaha DX7 SYS-EX sound cartridge patches',
+      '16-step sequencer with Motion Sequence parameter automation',
+      'Built-in lush stereo Chorus effect processor',
+      'Sync In/Out (3.5mm) and standard 5-pin DIN MIDI In'
+    ],
+    includedAccessories: [
+      'Korg 9V DC low-noise power supply',
+      '3.5mm stereo sync link cable',
+      '3.5mm mini-jack to dual 1/4" studio breakout lead'
+    ],
+    powerRequirement: '9V DC adapter (supplied) or 6x AA batteries',
+    idealFor: 'Lush 80s synth bells, metallic percussion, snappy FM basslines, techno polyrhythms'
+  },
+
+  // 4. Korg Volca Keys
+  {
+    id: 'korg-volca-keys',
+    name: 'Korg Volca Keys Analogue Loop Synthesizer',
+    brand: 'Korg',
+    model: 'Volca Keys (Analog Tape Delay)',
+    category: 'synthesizers',
+    categoryLabel: 'Synthesizers & Keys',
+    image: korgVolcaKeysImg,
+    dailyRate: 220,
+    weekendRate: 370,
+    weeklyRate: 850,
+    deposit: 750,
+    inStock: true,
+    stockCount: 4,
+    featured: false,
+    popular: false,
+    tagline: 'Warm 3-voice true analogue polyphonic synth with vintage tape delay simulator',
+    description: 'True analog polyphonic lead synthesizer featuring 3 voices, self-oscillating low-pass resonant filter, and a warm Space Tape Delay effect. Perfect for lush ambient drones, vintage chord stabs, and hypnotic arpeggiated sequences.',
+    specs: [
+      '3-Voice True Analog Architecture (Poly, Unison, Octave, Fifth, Unison-Ring)',
+      'Legendary miniKORG700S-derived 12dB/oct Low-Pass Resonant Filter',
+      'Built-in Space Tape Delay simulator for spatial echo trails',
+      'Loop Sequencer with Motion Sequence & Active Step function',
+      'Touch-sensitive multi-touch keyboard strip with portamento'
+    ],
+    includedAccessories: [
+      'Dedicated 9V DC power supply',
+      '3.5mm sync interconnect cable',
+      'Studio mini-jack to 1/4" balanced patch lead'
+    ],
+    powerRequirement: '9V DC adapter (included) or 6x AA batteries',
+    idealFor: 'Warm analog pads, sci-fi sweeps, polyphonic chord stabs, ambient electronic tracks'
+  },
+
+  // 5. Korg Volca Bass
+  {
+    id: 'korg-volca-bass',
+    name: 'Korg Volca Bass Analogue Bass Machine',
+    brand: 'Korg',
+    model: 'Volca Bass (3-Oscillator)',
+    category: 'synthesizers',
+    categoryLabel: 'Synthesizers & Keys',
+    image: korgVolcaBassImg,
+    dailyRate: 220,
+    weekendRate: 370,
+    weeklyRate: 850,
+    deposit: 750,
+    inStock: true,
+    stockCount: 5,
+    featured: false,
+    popular: true,
+    tagline: 'Monstrous 3-oscillator pure analogue bass synthesizer with razor-sharp filter',
+    description: 'Analog bass synthesizer engineered with three individual analog oscillators capable of detuned unison for gargantuan sub-bass or distinct 3-part melodies. Features Electribe-style step sequencing with Slide functions for authentic acid bass glides.',
+    specs: [
+      '3 Independent Analog Oscillators (Sawtooth and Square waveforms)',
+      '12dB/oct resonant analog filter with dedicated peak resonance control',
+      'Electribe-style 16-step sequencer with Active Step and Slide accents',
+      'LFO with Triangle/Square shapes routable to Amp, Pitch, or Filter Cutoff',
+      'Analog Sync In/Out for tight synchronization with other Volca units'
+    ],
+    includedAccessories: [
+      'Dedicated 9V DC low-noise power supply',
+      'Stereo patch breakout cable',
+      '3.5mm sync clock cord'
+    ],
+    powerRequirement: '9V DC adapter (included) or 6x AA batteries',
+    idealFor: 'Acid house basslines, heavy sub-bass foundation, punchy electro riffs'
+  },
+
+  // 6. DBBox
+  {
+    id: 'dbbox-audio-tester',
+    name: 'DBBox Studio DI Box & Audio Cable Signal Tester',
+    brand: 'CTP Systems',
+    model: 'DBBox Multi-Format Diagnostic Tool',
+    category: 'interfaces',
+    categoryLabel: 'Interfaces & Signal Tools',
+    image: dbboxTesterImg,
+    dailyRate: 180,
+    weekendRate: 300,
+    weeklyRate: 700,
+    deposit: 600,
+    inStock: true,
+    stockCount: 6,
+    featured: false,
+    popular: false,
+    tagline: 'Handheld studio DI box, precision tone generator & multi-cable diagnostic tester',
+    description: 'The sound engineer and audio technician’s must-have diagnostic tool. Features an onboard tone oscillator (pink noise, 1kHz, 400Hz), 48V phantom power tester with voltage readout, built-in monitor speaker, active balanced DI box, and instant continuity testing for XLR, 1/4" TRS, and RCA lines.',
+    specs: [
+      'Cable Continuity Tester: XLR 3-Pin, 1/4" (6.35mm) TRS Jack, 3.5mm, RCA Phono',
+      'Signal Generator: Calibrated Sine Wave (100Hz, 400Hz, 1kHz, 10kHz) and Pink Noise',
+      'Microphone Input Preamp with Phantom Power LED indicator and speaker monitor',
+      'Active Balanced DI Box with stepped output level attenuator',
+      'Built-in speaker and 3.5mm headphone amplifier for audio line snooping'
+    ],
+    includedAccessories: [
+      'Shock-absorbing protective rubber holster',
+      'Set of calibrated test probes and patch adapters',
+      'Industrial 9V long-life alkaline batteries installed',
+      'Heavy-duty nylon zippered travel case'
+    ],
+    powerRequirement: 'Internal 9V battery or external DC supply',
+    idealFor: 'Studio troubleshooting, live PA line-checks, testing venue multicores, festival dock checks'
+  },
+
+  // 7. Akai Max 49
+  {
+    id: 'akai-max-49',
+    name: 'Akai Max 49 USB/MIDI/CV Controller',
+    brand: 'Akai Professional',
+    model: 'Max 49 (Touch Faders & CV/Gate)',
+    category: 'synthesizers',
+    categoryLabel: 'Synths & Samplers',
+    image: akaiMax49Img,
+    dailyRate: 320,
+    weekendRate: 540,
+    weeklyRate: 1250,
+    deposit: 1100,
+    inStock: true,
+    stockCount: 3,
+    featured: true,
+    popular: true,
+    tagline: '49 semi-weighted keys with revolutionary LED touch faders and analog CV/Gate',
+    description: 'Flagship production controller featuring 49 semi-weighted keys with aftertouch, 12 backlit genuine MPC pads with classic Note Repeat, 8 revolutionary illuminated touch faders for dynamic parameter control, and built-in analog CV/Gate outputs to control modern and vintage modular gear.',
+    specs: [
+      '49 Semi-weighted keys with Aftertouch for expressive playing',
+      '8 Backlit LED Touch Faders for continuous MIDI CC and CV control',
+      '12 Real MPC Pads across 4 banks (48 assignable pads total)',
+      'Analog CV & Gate outputs (1V/Oct) to drive modular and vintage synths',
+      'Built-in 32-step arpeggiator and step sequencer'
+    ],
+    includedAccessories: [
+      'Padded heavy-duty gig transport bag',
+      'Gold-plated shielded USB-B cable',
+      'External power adapter for standalone hardware operation',
+      'M-Audio universal sustain pedal with polarity switch'
+    ],
+    powerRequirement: 'USB Bus-Powered or 12V DC adapter (supplied)',
+    idealFor: 'DAW music production, controlling analog synthesizers, expressive live keyboard performance'
+  },
+
+  // 8. Yamaha HS8 (x1)
+  {
+    id: 'yamaha-hs8-single',
+    name: 'Yamaha HS8 8-Inch 120W Active Studio Reference Monitor (x1)',
+    brand: 'Yamaha',
+    model: 'HS8 Active Reference (Single Unit)',
+    category: 'monitors',
+    categoryLabel: 'Studio Monitors',
+    image: yamahaHs8Img,
+    dailyRate: 260,
+    weekendRate: 440,
+    weeklyRate: 1050,
+    deposit: 950,
+    inStock: true,
+    stockCount: 6,
+    featured: true,
+    popular: true,
+    tagline: '8-inch 120W bi-amplified active studio reference monitor with iconic white cone',
+    description: 'The modern successor to the legendary NS-10 studio standard. Houses an 8" white cone woofer and 1" dome tweeter powered by a high-efficiency 120W bi-amp system. Delivers exceptionally accurate, honest frequency response down to 38Hz for surgical low-end evaluation.',
+    specs: [
+      '120W Bi-Amp Amplification (75W Low Frequency + 45W High Frequency)',
+      '8-inch cone woofer and 1-inch high-performance dome tweeter',
+      'Wide frequency response: 38Hz to 30kHz',
+      'Room Control and High Trim acoustic response switches',
+      'Balanced XLR and 1/4" TRS phone jack inputs'
+    ],
+    includedAccessories: [
+      'Auralex high-density acoustic foam isolation decoupling wedge',
+      'Balanced XLR-to-TRS Mogami studio audio cable',
+      'Heavy-duty IEC power cable'
+    ],
+    powerRequirement: '220V - 240V SA 3-pin plug (Surge-protected)',
+    idealFor: 'Amapiano log drum mixing, sub-bass tuning, mastering reference, DJ monitoring'
+  },
+
+  // 9. JBL LSR 305/308 Studio Monitor (x1)
+  {
+    id: 'jbl-lsr-monitor-single',
+    name: 'JBL LSR 305/308 Powered Studio Monitor (x1)',
+    brand: 'JBL Professional',
+    model: 'LSR 3-Series Powered Monitor',
+    category: 'monitors',
+    categoryLabel: 'Studio Monitors',
+    image: jblLsrMonitorImg,
+    dailyRate: 240,
+    weekendRate: 400,
+    weeklyRate: 950,
+    deposit: 850,
+    inStock: true,
+    stockCount: 5,
+    featured: false,
+    popular: true,
+    tagline: 'Powered studio monitor featuring patented Image Control Waveguide for broad sweet spot',
+    description: 'Equipped with JBL’s patented Image Control Waveguide originally developed for the flagship M2 Master Reference Monitor. Provides breathtaking stereo imaging, pristine high-frequency detail, and punchy, tight bass reproduction in any room.',
+    specs: [
+      'Patented Image Control Waveguide ensures expansive sweet spot and neutral off-axis response',
+      'Dual integrated Class-D power amplifiers with ample dynamic headroom',
+      'Long-throw woofer and damped woven-composite Neodymium tweeter',
+      'Selectable Input Sensitivity (+4dBu / -10dBV) and HF/LF Trim switches',
+      'Balanced XLR and 1/4" TRS inputs'
+    ],
+    includedAccessories: [
+      'Dense acoustic decoupling isolation pad',
+      'Balanced Mogami TRS-to-XLR studio patch lead',
+      'IEC power cord with surge protection'
+    ],
+    powerRequirement: '220V - 240V SA 3-pin plug',
+    idealFor: 'Music production, vocal tracking control rooms, video post-production editing'
+  },
+
+  // 10. Pioneer DM-50
+  {
+    id: 'pioneer-dm-50-pair',
+    name: 'Pioneer DM-50 5-Inch Desktop Active Monitor Speaker Pair',
+    brand: 'Pioneer DJ',
+    model: 'DM-50 Active Desktop Pair (L + R)',
+    category: 'monitors',
+    categoryLabel: 'Studio Monitors',
+    image: pioneerDm50Img,
+    dailyRate: 290,
+    weekendRate: 490,
+    weeklyRate: 1150,
+    deposit: 1000,
+    inStock: true,
+    stockCount: 6,
+    featured: true,
+    popular: true,
+    tagline: '5-inch active monitor pair with instant one-touch DJ / Production DSP sound modes',
+    description: 'Versatile 5-inch desktop monitor pair engineered specifically for creators who both DJ and produce music. A rear switch activates DSP tuning: flip to DJ mode for punchy, energizing bass, or Production mode for flat, honest acoustic reference.',
+    specs: [
+      'Two-way bass reflex active monitor speakers (Complete Matched Pair)',
+      '5-inch fiberglass woofers with front-firing bass reflex ducts with Grooves',
+      '3/4-inch soft dome tweeters with DECO convex diffusers for wide 3D stereo sound',
+      'Switchable DSP Sound Mode: DJ Mode / Production Mode',
+      'Multiple inputs: RCA, 3.5mm stereo mini-jack, and 1/4" TRS inputs'
+    ],
+    includedAccessories: [
+      'Speaker interconnect link cable (2m)',
+      'Pair of angled desktop foam isolation bases',
+      '3.5mm to dual RCA audio breakout lead',
+      'Power supply cable'
+    ],
+    powerRequirement: '220V - 240V SA 3-pin plug',
+    idealFor: 'Bedroom DJ setups, home recording workstations, podcast broadcast suites'
+  },
+
+  // 11. Behringer U-Phoria Audio Interface
+  {
+    id: 'behringer-uphoria-interface',
+    name: 'Behringer U-Phoria 24-Bit/192kHz USB Audio Interface',
+    brand: 'Behringer',
+    model: 'U-Phoria HD Series (MIDAS Preamps)',
+    category: 'interfaces',
+    categoryLabel: 'Interfaces & Signal Tools',
+    image: behringerUphoriaImg,
+    dailyRate: 190,
+    weekendRate: 320,
+    weeklyRate: 750,
+    deposit: 700,
     inStock: true,
     stockCount: 7,
     featured: false,
     popular: true,
-    tagline: 'Ultra-low self-noise with classic Neumann punch and air',
-    description: 'Featuring the capsule derived from the legendary U67/U87, the TLM 103 offers unmatched 7dB-A self-noise, making it phenomenal for delicate vocals, rap vocals, and broadcast audio.',
-    specs: ['Cardioid directional pattern', 'Extremely low 7 dB-A self-noise', 'Transformerless circuitry', 'Max SPL 138 dB'],
-    includedAccessories: ['Neumann EA 4 shockmount', 'Aluminium carry case', 'Dual-mesh pop filter', 'Mogami XLR cable'],
-    powerRequirement: '48V Phantom Power required',
-    idealFor: 'Rap/Amapiano vocal hooks, home/boutique studio tracking, podcast hosts'
+    tagline: 'Audiophile 24-bit/192kHz USB audio interface equipped with world-renowned MIDAS preamps',
+    description: 'High-resolution 24-bit/192kHz USB audio interface featuring world-class MIDAS-designed microphone preamplifiers with switchable +48V phantom power. Provides direct zero-latency hardware monitoring for pristine vocal tracking and instrument recording on Mac or PC.',
+    specs: [
+      '2x4 USB 2.0 Audio/MIDI Interface with 24-Bit/192 kHz audiophile resolution',
+      '2 State-of-the-art MIDAS-designed mic preamplifiers with +48V phantom power',
+      'Combo XLR/TRS inputs for microphones, guitars, and synthesizers',
+      'Zero-latency Direct Monitoring switch with Mix Balance control',
+      'Dedicated high-output headphone amplifier with independent level control'
+    ],
+    includedAccessories: [
+      'Shielded high-speed USB cable with ferrite choke',
+      '2x Balanced 1/4" TRS-to-XLR studio patch cables',
+      'Protective neoprene transport sleeve'
+    ],
+    powerRequirement: 'USB Bus-Powered or external 5V adapter',
+    idealFor: 'Vocal tracking in home studios, mobile laptop recording, podcast recording sessions'
   },
+
+  // 12. Steinberg Midex 8
   {
-    id: 'shure-sm7b',
-    name: 'Shure SM7B Cardioid Dynamic Vocal Microphone',
-    brand: 'Shure',
-    model: 'SM7B + Cloudlifter CL-1',
-    category: 'microphones',
-    categoryLabel: 'Studio Microphones',
-    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 350,
+    id: 'steinberg-midex-8',
+    name: 'Steinberg Midex 8 8x8 USB Hardware MIDI Interface',
+    brand: 'Steinberg',
+    model: 'Midex 8 (Linear Time Base)',
+    category: 'interfaces',
+    categoryLabel: 'Interfaces & Signal Tools',
+    image: steinbergMidex8Img,
+    dailyRate: 250,
+    weekendRate: 420,
+    weeklyRate: 990,
+    deposit: 900,
+    inStock: true,
+    stockCount: 3,
+    featured: false,
+    popular: false,
+    tagline: 'Studio-grade 8x8 hardware MIDI interface with sub-millisecond Linear Time Base timing',
+    description: 'Professional 8-In / 8-Out rackmount hardware MIDI interface delivering 128 discrete MIDI channels. Features Steinberg’s proprietary Linear Time Base (LTB) protocol that completely eliminates MIDI timing jitter and slop when controlling expansive multi-synth hardware rigs.',
+    specs: [
+      '8 Independent MIDI Inputs and 8 Independent MIDI Outputs (128 discrete channels)',
+      'Linear Time Base (LTB) architecture delivers sample-accurate sub-millisecond timing',
+      'Individual front-panel LED activity indicators for every input and output port',
+      'High-speed USB connection to DAW software (Cubase, Ableton, FL Studio, Logic)',
+      'Standard 19-inch 1U rugged all-metal rackmount chassis'
+    ],
+    includedAccessories: [
+      'Rackmount ears kit installed',
+      'High-speed shielded USB connection cable',
+      'Set of 8x 5-pin DIN heavy-duty MIDI patch cables (3m each)',
+      'Dedicated AC power adapter'
+    ],
+    powerRequirement: 'USB powered or external 9V DC supply',
+    idealFor: 'Multi-hardware synth setups, electronic live sequencers, vintage drum machine rigs'
+  },
+
+  // 13. Hybrid DJ Mixer
+  {
+    id: 'hybrid-dj-mixer-4ch',
+    name: 'Hybrid 4-Channel Club Performance DJ Mixer',
+    brand: 'Hybrid',
+    model: '4-Channel Performance Club Mixer',
+    category: 'dj',
+    categoryLabel: 'DJ Decks & Mixers',
+    image: hybridDjMixerImg,
+    dailyRate: 320,
+    weekendRate: 540,
+    weeklyRate: 1250,
+    deposit: 1100,
+    inStock: true,
+    stockCount: 4,
+    featured: true,
+    popular: true,
+    tagline: 'Rugged 4-channel club and performance DJ mixer with balanced XLR master outputs',
+    description: 'Built for demanding club nights, mobile sound setups, and private events. Features 4 multi-source channels, 3-band rotary EQ with full frequency kill, smooth replaceable crossfader, dedicated DJ mic channel with talkover, and balanced XLR master outputs.',
+    specs: [
+      '4 Channels with switchable Phono / Line inputs for CDJs, media players, and turntables',
+      'Balanced XLR and unbalanced RCA Master outputs + dedicated Booth monitor output',
+      '3-Band EQ per channel (-26dB to +12dB) with responsive channel gain meters',
+      'Dedicated DJ Microphone input with 2-band EQ and automatic talkover function',
+      '10-segment dual stereo LED VU meters and smooth replaceable crossfader'
+    ],
+    includedAccessories: [
+      'Heavy-duty aluminium road flightcase',
+      'Pair of 5m balanced XLR-to-XLR master signal cables',
+      'Dual gold-plated RCA patch leads',
+      'IEC locking power cable'
+    ],
+    powerRequirement: '220V - 240V SA 3-pin plug (Surge-protected)',
+    idealFor: 'Gauteng house parties, club DJ booths, festival secondary stages, wedding DJ setups'
+  },
+
+  // 14. Keyboard and Tripod (x3 bundles)
+  {
+    id: 'stands-hardware-bundle',
+    name: 'Keyboard and Tripod Stands (x3 Complete Bundles)',
+    brand: 'SoundKing / K&M Hardware',
+    model: 'Heavy-Duty Double-X & Tripod Bundles (Pack of 3)',
+    category: 'hardware',
+    categoryLabel: 'Stands & Hardware Bundles',
+    image: standsTripodBundleImg,
+    dailyRate: 280,
+    weekendRate: 470,
+    weeklyRate: 1100,
+    deposit: 900,
+    inStock: true,
+    stockCount: 5,
+    featured: false,
+    popular: true,
+    tagline: '3 complete sets of heavy-duty double-X keyboard stands & tripod speaker stands',
+    description: 'Commercial hardware bundle containing 3 heavy-duty double-braced X-frame keyboard/synth stands and 3 heavy steel tripod speaker stands with locking safety pins. Engineered to safely hold heavy 88-key stage pianos, synthesizer rigs, and PA speaker cabinets.',
+    specs: [
+      'Includes 3x Double-X Heavy-Duty Keyboard Stands + 3x Steel Tripod Speaker Stands',
+      'Reinforced double-braced steel construction supports up to 60kg per stand',
+      'Quick-pull ergonomic clutch mechanism with multiple secure height positions',
+      'Tripod speaker stands feature locking safety pins and 35mm universal mounting poles',
+      'Non-slip grooved rubber end caps to prevent slippage on smooth stage surfaces'
+    ],
+    includedAccessories: [
+      '3x Heavy-duty zippered nylon stand carry bags with shoulder straps',
+      '6x Steel safety locking pins and tether chains',
+      'Velcro stage cable routing ties'
+    ],
+    powerRequirement: 'Passive mechanical stage hardware (No power required)',
+    idealFor: 'Live band performances, church conferences, multi-synth studio setups, DJ speaker mounting'
+  },
+
+  // 15. Numark NDX500/NDX200 (x2)
+  {
+    id: 'numark-ndx-pair',
+    name: 'Numark NDX500 / NDX200 Dual USB/CD Media Players (Pair)',
+    brand: 'Numark',
+    model: 'NDX500/NDX200 Media Player Pair (x2)',
+    category: 'dj',
+    categoryLabel: 'DJ Decks & Mixers',
+    image: numarkNdxPlayersImg,
+    dailyRate: 380,
+    weekendRate: 640,
+    weeklyRate: 1500,
+    deposit: 1300,
+    inStock: true,
+    stockCount: 4,
+    featured: true,
+    popular: true,
+    tagline: 'Pair of dual USB and CD media players with touch-sensitive scratch wheels',
+    description: 'Matched pair of versatile tabletop DJ media players capable of mixing from USB flash drives, audio CDs, and MP3 CDs, or acting as USB MIDI controllers with DJ software. Equipped with large touch-sensitive jog wheels, Anti-Shock buffer protection, and seamless looping.',
+    specs: [
+      'Pair of 2x Tabletop Digital Media Players for dual-deck mixing',
+      'Plays audio CDs, CD-Rs, MP3 CDs, and tracks directly from USB thumb drives',
+      'Large touch-sensitive jog wheels for scratch and pitch bend control',
+      '3 Hot Cues, seamless loop with stutter start, and adjustable pitch range (±4, 8, 16%)',
+      'Anti-Shock buffered skip-protection technology for reliable club playback'
+    ],
+    includedAccessories: [
+      'Twin-compartment padded road flightcase',
+      '2x Stereo RCA-to-RCA audio patch cables',
+      '2x IEC power supply cords',
+      '2x USB controller cables for laptop DJ software'
+    ],
+    powerRequirement: '220V - 240V SA 3-pin plug',
+    idealFor: 'CD and USB DJs, mobile DJ gigs, backup club players, private birthday events'
+  },
+
+  // 16. Pioneer CDJ-350
+  {
+    id: 'pioneer-cdj-350-deck',
+    name: 'Pioneer CDJ-350 Multi-Format Digital Rekordbox DJ Deck',
+    brand: 'Pioneer DJ',
+    model: 'CDJ-350 Rekordbox Digital Player',
+    category: 'dj',
+    categoryLabel: 'DJ Decks & Mixers',
+    image: pioneerCdj350Img,
+    dailyRate: 360,
     weekendRate: 600,
     weeklyRate: 1400,
     deposit: 1200,
     inStock: true,
-    stockCount: 9,
-    featured: false,
-    popular: true,
-    tagline: 'The king of broadcasting, rap verses, and podcasting',
-    description: 'Flat, wide-range frequency response with electromagnetic hum shielding. Bundled free of charge with an authentic Cloudlifter CL-1 Mic Activator (+25dB ultra-clean gain) so you get pristine audio straight out of the box.',
-    specs: ['Cardioid dynamic transducer', 'Bass rolloff and mid-range emphasis (presence boost)', 'Cloudlifter CL-1 inline preamp included', 'Internal air suspension shock isolation'],
-    includedAccessories: ['Cloudlifter CL-1', 'Standard and A7WS close-talk windscreens', 'K&M heavy desk boom arm', '2x Mogami XLR cables'],
-    powerRequirement: 'Dynamic (48V required for bundled Cloudlifter only)',
-    idealFor: 'Podcasting studios, punchy hip-hop & trap vocals, rock guitar cabs'
-  },
-  {
-    id: 'akg-c414-xls',
-    name: 'AKG C414 XLS Multi-Pattern Reference Condenser',
-    brand: 'AKG',
-    model: 'C414 XLS',
-    category: 'microphones',
-    categoryLabel: 'Studio Microphones',
-    image: 'https://images.unsplash.com/photo-1583244532610-2a234e7c3eca?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 480,
-    weekendRate: 850,
-    weeklyRate: 1950,
-    deposit: 1800,
-    inStock: true,
-    stockCount: 4,
-    featured: false,
-    popular: false,
-    tagline: '9 polar patterns for supreme versatility and acoustic precision',
-    description: 'Engineered for linear, neutral sonic accuracy. 9 selectable polar patterns make it the premier choice for acoustic guitars, grand pianos, drum overheads, and choir recordings across Gauteng.',
-    specs: ['9 Polar Patterns (Omni, Cardioid, Wide Cardioid, Hypercardioid, Figure-8 + 4 intermediate)', '3 attenuation levels (-6/-12/-18dB)', '3 bass-cut filters', 'Peak hold LED indicator'],
-    includedAccessories: ['Spider shockmount', 'Pop filter', 'Windscreen', 'Metal flightcase', 'XLR cable'],
-    powerRequirement: '48V Phantom Power required',
-    idealFor: 'Acoustic guitar recording, choir captures, grand piano, drum overheads'
-  },
-
-  // --- STUDIO MONITORS ---
-  {
-    id: 'genelec-8040b-pair',
-    name: 'Genelec 8040B Active 6.5" Studio Monitors (Pair)',
-    brand: 'Genelec',
-    model: '8040B Dark Grey (Pair)',
-    category: 'monitors',
-    categoryLabel: 'Studio Monitors',
-    image: monitorsSynthImg,
-    dailyRate: 920,
-    weekendRate: 1600,
-    weeklyRate: 3700,
-    deposit: 3200,
-    inStock: true,
-    stockCount: 4,
+    stockCount: 5,
     featured: true,
     popular: true,
-    tagline: 'Uncompromising Finnish acoustic transparency and brutal mix honesty',
-    description: 'Die-cast aluminum Minimum Diffraction Enclosure (MDE) with Directivity Control Waveguide (DCW). If a mix sounds good on the 8040Bs, it translates flawlessly anywhere from Spotify to club soundsystems.',
-    specs: ['Bi-amplified Class D 90W + 90W', '6.5" woofer + 3/4" metal dome tweeter', 'Frequency response 41 Hz - 25 kHz', 'Iso-Pod decoupling isolation feet included'],
-    includedAccessories: ['2x Genelec Iso-Pod stands', '2x K&M heavy floor monitor stands', '2x balanced XLR-to-TRS cables', 'Power leads in road case'],
+    tagline: 'Multi-format digital rekordbox DJ deck with BPM lock and beat loop divide',
+    description: 'The beloved Pioneer workhorse digital deck that bridges CD, USB, and computer DJing. Features full rekordbox music management support, BPM Lock for master tempo matching, and Beat Loop Divide for creating instant live rolls and remixes.',
+    specs: [
+      'Multi-Format Playback: USB flash drives, CD, CD-R/RW, AAC, AIFF, MP3, WAV files',
+      'BPM Lock function allows matching tempo with a single button press',
+      'Display shows beat position, playback progress, and song information',
+      'Beat Loop Divide chops rhythm loops into 1/2, 1/4, and 1/8 beat rolls',
+      'Operates as a high-fidelity USB audio interface and MIDI controller'
+    ],
+    includedAccessories: [
+      'Original Pioneer road flightcase',
+      'AudioQuest gold-plated stereo RCA audio lead',
+      'Locking IEC power cord',
+      'Pre-formatted 32GB Rekordbox USB drive'
+    ],
     powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Critical audio mixing, mastering sessions, high-budget music scoring'
-  },
-  {
-    id: 'yamaha-hs8-pair',
-    name: 'Yamaha HS8 8-inch Powered Studio Monitors (Pair)',
-    brand: 'Yamaha',
-    model: 'HS8 Matte Black (Pair)',
-    category: 'monitors',
-    categoryLabel: 'Studio Monitors',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 450,
-    weekendRate: 780,
-    weeklyRate: 1800,
-    deposit: 1500,
-    inStock: true,
-    stockCount: 8,
-    featured: false,
-    popular: true,
-    tagline: 'The legendary white-cone modern successor to the NS-10',
-    description: '120W bi-amp amplification with 8" cone woofer and 1" dome tweeter. Room Control and High Trim response controls allow tailoring to any treated or untreated production room.',
-    specs: ['Bi-amp 75W LF + 45W HF (120W total)', '8" woofer delivers down to 38Hz bass extension', 'Room Control and High Trim switches', 'XLR and TRS phone jack inputs'],
-    includedAccessories: ['Pair of acoustic foam isolation pads', 'Pair of desktop/floor stands', 'Balanced TRS/XLR cables', 'Power cords'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Amapiano bassline mixing, home studio upgrades, pop production'
-  },
-  {
-    id: 'genelec-7050c-sub',
-    name: 'Genelec 7050C 8-inch Active Studio Subwoofer',
-    brand: 'Genelec',
-    model: '7050C Studio Sub',
-    category: 'monitors',
-    categoryLabel: 'Studio Monitors',
-    image: monitorsSynthImg,
-    dailyRate: 650,
-    weekendRate: 1100,
-    weeklyRate: 2600,
-    deposit: 2200,
-    inStock: true,
-    stockCount: 3,
-    featured: false,
-    popular: false,
-    tagline: 'Laminar Spiral Enclosure for clean, tight, distortion-free sub bass',
-    description: 'Extends frequency response down to 24 Hz with 103 dB SPL capacity. Perfect companion for Genelec 8030/8040 monitors to evaluate subterranean log drums and synth bass frequencies.',
-    specs: ['130W Class D amplifier', 'Spiral bass reflex enclosure', 'Low frequency cutoff: 24 Hz (-6dB)', '5.1 and stereo bass management onboard'],
-    includedAccessories: ['Flight padded transport bag', 'Balanced XLR link cables', 'Calibration instructions'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Amapiano log-drum tuning, film sub effects, bass-heavy electronic mastering'
-  },
-
-  // --- AUDIO INTERFACES & OUTBOARD ---
-  {
-    id: 'apollo-x8-heritage',
-    name: 'Universal Audio Apollo x8 Heritage Edition (Thunderbolt 3)',
-    brand: 'Universal Audio',
-    model: 'Apollo x8 Rackmount',
-    category: 'interfaces',
-    categoryLabel: 'Audio Interfaces & Outboard',
-    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 850,
-    weekendRate: 1500,
-    weeklyRate: 3400,
-    deposit: 3000,
-    inStock: true,
-    stockCount: 4,
-    featured: true,
-    popular: true,
-    tagline: '18 x 24 Thunderbolt 3 audio interface with HEXA Core real-time DSP',
-    description: 'Elite-class A/D and D/A conversion with 129 dB dynamic range. Run legendary UAD powered plug-ins (Neve, Lexicon, Manley, Fairchild) in real-time with near-zero latency while tracking full bands.',
-    specs: ['6-core HEXA DSP processing', '4 Unison-enabled mic preamps', 'Elite-class 24-bit/192 kHz converters', 'Talkback mic onboard', 'Includes UAD Heritage Suite bundle pre-authorized'],
-    includedAccessories: ['Gator 2U padded rack case', 'Apple certified Thunderbolt 3 cable (2m)', 'Power supply', 'Pre-installed UAD plug-ins license token'],
-    powerRequirement: 'External 12V DC power brick (supplied with SA plug)',
-    idealFor: 'Tracking multi-instrumental sessions, vocal stacks with real-time autotune/compression'
-  },
-  {
-    id: 'apollo-twin-x-quad',
-    name: 'Universal Audio Apollo Twin X QUAD (Thunderbolt 3)',
-    brand: 'Universal Audio',
-    model: 'Apollo Twin X QUAD',
-    category: 'interfaces',
-    categoryLabel: 'Audio Interfaces & Outboard',
-    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 490,
-    weekendRate: 850,
-    weeklyRate: 1950,
-    deposit: 1800,
-    inStock: true,
-    stockCount: 8,
-    featured: false,
-    popular: true,
-    tagline: 'Desktop 10 x 6 interface with QUAD Core processing power',
-    description: 'Compact desktop titan featuring two Unison mic preamps, pristine headphone amp, and 4 DSP chips for real-time tracking through vintage analog emulations.',
-    specs: ['QUAD Core DSP processing', '2 Unison mic/line preamps + 1 Hi-Z instrument input', 'Optical ADAT/SPDIF digital input', 'Thunderbolt 3 ultra-fast bus'],
-    includedAccessories: ['Hard shell travel EVA case', 'Thunderbolt 3 cable', 'Locking power supply'],
-    powerRequirement: '12V DC power adapter (included)',
-    idealFor: 'Location vocal sessions, hotel room production setups, mobile songwriting camps'
-  },
-  {
-    id: 'warm-audio-wa2a',
-    name: 'Warm Audio WA-2A Optical Tube Compressor',
-    brand: 'Warm Audio',
-    model: 'WA-2A 2U Rack',
-    category: 'interfaces',
-    categoryLabel: 'Audio Interfaces & Outboard',
-    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 420,
-    weekendRate: 720,
-    weeklyRate: 1700,
-    deposit: 1600,
-    inStock: true,
-    stockCount: 3,
-    featured: false,
-    popular: false,
-    tagline: 'Authentic Teletronix LA-2A optical tube leveling amplifier recreation',
-    description: 'Discrete signal path with CineMag USA transformers, 4 premium vacuum tubes, and an authentic Kenetek opto-cell. Delivers unmistakable warm, smooth, natural vocal compression that sits effortlessly in the mix.',
-    specs: ['US CineMag transformers', 'Kenetek T4B optical attenuator', '4 vacuum tubes (12AX7, 12BH7, 6AQ5)', 'Pre-emphasis control on rear'],
-    includedAccessories: ['Road case rack', '2x Mogami XLR balanced patch cables', 'Power cord'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Lush vocal tracking, warm bass guitar compression, master bus glue'
-  },
-
-  // --- SYNTHESIZERS & DRUM MACHINES ---
-  {
-    id: 'moog-subsequent-37',
-    name: 'Moog Subsequent 37 Paraphonic Analog Synthesizer',
-    brand: 'Moog',
-    model: 'Subsequent 37',
-    category: 'synthesizers',
-    categoryLabel: 'Synthesizers & Keys',
-    image: monitorsSynthImg,
-    dailyRate: 750,
-    weekendRate: 1300,
-    weeklyRate: 3000,
-    deposit: 2800,
-    inStock: true,
-    stockCount: 3,
-    featured: true,
-    popular: true,
-    tagline: 'The ultimate analog bass monster with multidrive grit',
-    description: 'Two-note paraphonic analog synthesizer with 37 semi-weighted keys, upgraded mixer section with double the headroom, re-tuned Multidrive, and high-powered headphone amplifier. Delivers bone-rattling sub-bass and screaming leads.',
-    specs: ['100% Analog signal path', '2 Oscillators + Sub Osc + Noise Generator', 'Classic Moog Ladder Filter with Multidrive', 'Duo Mode paraphonic architecture', 'DAW integration via USB/MIDI'],
-    includedAccessories: ['Moog ATA heavy flightcase with wheels', 'Sustain pedal', 'Stereo 1/4" balanced Mogami patch cables', 'IEC power cord'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Devastating analog basslines, synthwave, electronic and Amapiano hook design'
-  },
-  {
-    id: 'nord-stage-4-88',
-    name: 'Nord Stage 4 88-Key Flagship Stage Piano & Synth',
-    brand: 'Nord Keyboards',
-    model: 'Nord Stage 4 (88 Keys)',
-    category: 'synthesizers',
-    categoryLabel: 'Synthesizers & Keys',
-    image: 'https://images.unsplash.com/photo-1520523839898-50712825e3a7?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 1400,
-    weekendRate: 2400,
-    weeklyRate: 5600,
-    deposit: 4500,
-    inStock: true,
-    stockCount: 2,
-    featured: false,
-    popular: true,
-    tagline: 'Sweden’s legendary red flagship with Triple Sensor keybed',
-    description: 'New intuitive front panel with dedicated LED faders for each layer, upgraded Piano library with uncompressed samples, Wave 2 Synth engine with sample playback, and comprehensive per-layer effects section.',
-    specs: ['88-key Triple Sensor Hammer Action Keybed', 'Nord Wave 2 Synth Engine (3 independent layers)', 'Advanced Organ section with physical drawbars with LED indicators', 'Expanded FX section per layer'],
-    includedAccessories: ['Nord Red Softcase with wheels', 'Nord Triple Pedal', 'Heavy duty double-X stand', 'Mogami stereo jack cables'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Live gospel concerts, high-profile televised awards, premier jazz & pop gigs'
-  },
-  {
-    id: 'roland-tr8s',
-    name: 'Roland TR-8S Rhythm Performer Drum Machine',
-    brand: 'Roland',
-    model: 'TR-8S AIRA',
-    category: 'synthesizers',
-    categoryLabel: 'Synthesizers & Keys',
-    image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 450,
-    weekendRate: 780,
-    weeklyRate: 1800,
-    deposit: 1500,
-    inStock: true,
-    stockCount: 4,
-    featured: false,
-    popular: false,
-    tagline: 'Iconic 808, 909, 707, 727 sounds combined with custom sample playback',
-    description: 'ACB circuit modeling for authentic vintage Roland drums, plus SD card custom sample import. Hands-on illuminated faders with color coding for live jamming on stage or in the studio.',
-    specs: ['Full Roland TR legacy kits (808, 909, 606, 707, 727)', 'User sample playback with pitch & envelope controls', '8 assignable analog outputs', '128 patterns with variation and fills'],
-    includedAccessories: ['Decksaver protective cover + travel carry bag', 'Original Roland power supply', '1/4" output snake cables', '64GB pre-loaded sample SD card'],
-    powerRequirement: 'DC 5.7V adapter (included)',
-    idealFor: 'Live techno & house performances, beatmaking sessions, retro synthwave'
-  },
-
-  // --- PA SOUND & LIVE EVENT ---
-  {
-    id: 'yamaha-dxr15-pair',
-    name: 'Yamaha DXR15mkII 15" 1100W Powered Speakers (Pair)',
-    brand: 'Yamaha',
-    model: 'DXR15mkII (Pair with Stands)',
-    category: 'pa_sound',
-    categoryLabel: 'PA & Sound Systems',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 1100,
-    weekendRate: 1900,
-    weeklyRate: 4400,
-    deposit: 2500,
-    inStock: true,
-    stockCount: 6,
-    featured: true,
-    popular: true,
-    tagline: '134 dB max SPL powerhouse delivering clean, thunderous sound',
-    description: 'Equipped with an oversized 1.75" neodymium HF compression driver and 15" woofer powered by 1100W Class-D amplification. Ultra-reliable FIR-X DSP tuning provides exceptional definition across the whole room.',
-    specs: ['1100W Class-D amplification (950W LF + 150W HF)', 'Max SPL 134dB', 'D-CONTOUR multi-band dynamic processor', 'Onboard 3-channel mixer with mic/line inputs'],
-    includedAccessories: ['Pair of K&M heavy duty tripod speaker stands with carry bag', '2x Padded protective slipcovers', '2x 10m heavy XLR cables', '2x 10m IEC extension leads'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Private events up to 250 people, DJ gigs, corporate presentations in Sandton'
-  },
-  {
-    id: 'electrovoice-ekx18sp',
-    name: 'Electro-Voice EKX-18SP 18" 1300W Powered Subwoofer',
-    brand: 'Electro-Voice',
-    model: 'EKX-18SP',
-    category: 'pa_sound',
-    categoryLabel: 'PA & Sound Systems',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 950,
-    weekendRate: 1650,
-    weeklyRate: 3800,
-    deposit: 2200,
-    inStock: true,
-    stockCount: 4,
-    featured: false,
-    popular: true,
-    tagline: 'Heart-thumping 134 dB chest-rattling low-end foundation',
-    description: 'High-efficiency 1300W Class-D amplifier delivers up to 134 dB SPL utilizing ultra-durable EV-engineered transducers. Cardioid Control Technology allows steering bass towards the dancefloor while reducing stage rumble.',
-    specs: ['18-inch high-output woofer', '1300W Class D amplifier', 'Frequency response: 40 Hz - 150 Hz', 'QuickSmartDSP with LCD display and presets'],
-    includedAccessories: ['Heavy duty castor wheels installed', 'Padded slip cover', 'Distance pole for satellite top speaker', 'XLR link cables'],
-    powerRequirement: '220V - 240V SA 3-pin plug',
-    idealFor: 'Gauteng outdoor parties, marquee weddings, amapiano DJ bass punch'
-  },
-  {
-    id: 'shure-blx288-pg58',
-    name: 'Shure BLX288/PG58 Dual Wireless Handheld Mic System',
-    brand: 'Shure',
-    model: 'BLX288 Dual Wireless',
-    category: 'pa_sound',
-    categoryLabel: 'PA & Sound Systems',
-    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 490,
-    weekendRate: 850,
-    weeklyRate: 1950,
-    deposit: 1400,
-    inStock: true,
-    stockCount: 6,
-    featured: false,
-    popular: true,
-    tagline: 'Rock-solid dual wireless microphones with one-touch QuickScan',
-    description: 'Includes dual receiver and two PG58 handheld transmitter microphones. Features microprocessor-controlled internal antenna diversity and up to 14 hours of continuous battery life on standard AA batteries.',
-    specs: ['Dual-channel wireless receiver', '100m (300ft) operating line-of-sight range', 'One-touch QuickScan frequency selection', 'XLR and 1/4" individual outputs'],
-    includedAccessories: ['Dual receiver + power supply', '2x PG58 transmitters with mic clips', 'Hard shell carry case', 'Fresh Duracell AA battery pairs', '2x XLR output cables'],
-    powerRequirement: '12V DC power adapter (receiver) / AA batteries (microphones)',
-    idealFor: 'Weddings, corporate master-of-ceremonies, church conferences, live panel talks'
+    idealFor: 'Rekordbox prepared DJ sets, Gauteng club performances, bar gigs, private events'
   }
 ];
 
 export const CURATED_PACKAGES: PackageBundle[] = [
   {
-    id: 'amapiano-club-festival-rig',
-    name: 'The Amapiano & Club Headline DJ Rig',
-    badge: 'Most Popular for Gauteng Gigs',
-    tagline: 'Turnkey festival-grade DJ rider setup ready to plug & play',
-    description: 'The exact tech rider demanded by South Africa’s leading DJs and international headliners. Two Pioneer CDJ-3000s networked with the flagship DJM-A9 mixer in an ultra-sturdy flightcase with audio cables, link switch, and surge protection.',
-    image: djRigImg,
-    dailyRate: 2450,
-    weekendRate: 4200,
-    regularValue: 2950,
-    savings: 500,
-    targetAudience: 'Touring DJs, Club Promoters, VIP Private Parties in Sandton & Pretoria',
+    id: 'electronic-live-synth-lab',
+    name: 'The Electronic Live Synth & Sampler Lab',
+    badge: 'Electronic & Beatmaker Pick',
+    tagline: 'Hands-on sound design rig with Kaoss FX, Volca synths, and Akai controller',
+    description: 'The ultimate tactile electronic production and live jamming setup. Combines the Korg Kaossilator, Korg Kaoss Pad KP3 sampler/FX, Korg Volca Keys analog synth, and Akai Max 49 touch fader controller with all link cables and flightcases.',
+    image: korgKaossPadImg,
+    dailyRate: 980,
+    weekendRate: 1680,
+    regularValue: 1140,
+    savings: 160,
+    targetAudience: 'Electronic Producers, Beatmakers, Live Jam Performers, Sound Designers',
     includedItems: [
-      '2x Pioneer CDJ-3000 Multi Players',
-      '1x Pioneer DJM-A9 4-Channel Professional Mixer',
-      'Swan Pro Heavy Duty 3-Piece Flightcase with Laptop Stand Shelf',
-      'Netgear Gigabit Switch & Shielded Cat6 Link Cables',
-      'Mogami Gold Studio 5m XLR Master Output Cables',
+      '1x Korg Kaoss Pad KP3 Dynamic Effects Processor & Sampler',
+      '1x Korg Kaossilator Dynamic Phrase Synthesizer',
+      '1x Korg Volca Keys Analogue Loop Synthesizer with Tape Delay',
+      '1x Akai Max 49 USB/MIDI/CV Controller with LED Touch Faders',
+      'Complete Audio & Sync Interconnect Cable Loom',
       'Gauteng Load-Shedding Surge Protected Powerboard'
     ],
-    features: ['100% Rekordbox & Serato Ready', 'Pre-tested Firmware v3.0+', 'Free Spare AudioQuest RCA cables', 'Free Gauteng Wynberg Pickup or Priority Dispatch']
+    features: ['Instant Live Looping & FX', 'Analog Polyphonic Warmth', 'Touch Fader Modulation', 'Includes Road Cases']
   },
   {
-    id: 'platinum-vocal-tracking-suite',
-    name: 'The Platinum Vocal Tracking Suite',
-    badge: 'Studio Hitmaker Bundle',
-    tagline: 'Legendary German microphone and Apollo DSP for radio-ready vocals',
-    description: 'Transform any hotel suite, Airbnb, or project studio into an A-list recording sanctuary. Featuring the world’s most famous vocal microphone — the Neumann U87 Ai — coupled with Universal Audio Apollo Twin X QUAD and Aston Halo acoustic shield.',
-    image: micSuiteImg,
-    dailyRate: 1350,
-    weekendRate: 2300,
-    regularValue: 1670,
-    savings: 320,
-    targetAudience: 'Vocalists, Rappers, Hit Producers, Commercial Voiceover Talent',
+    id: 'gauteng-club-dj-station',
+    name: 'The Gauteng Club & Event DJ Deck Station',
+    badge: 'Most Popular for Gigs',
+    tagline: 'Complete 3-deck mixing station with Pioneer CDJ, Numark media players & Hybrid mixer',
+    description: 'A complete multi-format DJ booth setup ready for private parties, club nights, and lounge events. Featuring the Pioneer CDJ-350, a pair of Numark NDX dual USB/CD players, and the rugged Hybrid 4-channel performance club mixer with balanced XLR master outputs.',
+    image: pioneerCdj350Img,
+    dailyRate: 920,
+    weekendRate: 1580,
+    regularValue: 1060,
+    savings: 140,
+    targetAudience: 'Club DJs, Mobile Event DJs, Party Hosts in Sandton & Pretoria',
     includedItems: [
-      'Neumann U87 Ai Large-Diaphragm Condenser (Nickel finish)',
-      'Universal Audio Apollo Twin X QUAD (Thunderbolt 3)',
-      'Neumann EA 87 Elastic Suspension Shockmount',
-      'Aston Halo Portable Acoustic Vocal Reflection Shield',
-      'K&M Heavy Duty Studio Boom Stand with Cast-Iron Base',
-      'Mogami Gold Studio 6m XLR Cable'
+      '1x Pioneer CDJ-350 Multi-Format Rekordbox Deck',
+      '2x Numark NDX500/NDX200 Dual USB/CD Media Players (Pair)',
+      '1x Hybrid 4-Channel Club Performance DJ Mixer',
+      'Mogami Gold Studio 5m Balanced XLR Master Output Leads',
+      'Heavy-Duty Road Flightcases with Cable Loom',
+      'Surge Protected 4-Way Power Distribution Board'
     ],
-    features: ['Near-Zero Latency UAD Autotune Tracking', 'Pristine 129dB Dynamic Range', 'Aston Halo Eliminates Room Echo', 'Pre-licensed Neve 1073 & 1176 Plugins']
+    features: ['USB & CD Multi-Format Playback', 'Rekordbox BPM Lock', '4-Channel Club Mixing with XLR Out', 'Pre-tested Equipment']
   },
   {
-    id: 'producers-synthesizer-monitoring-lab',
-    name: 'The Producer’s Analog & Monitoring Lab',
-    badge: 'Beatmaker & Producer Pick',
-    tagline: 'Genelec precision monitors with genuine Moog analog thunder',
-    description: 'The definitive sonic arsenal for serious producers who need surgical mixing clarity and crushing analog sub-bass. Features a matched pair of Genelec 8040B monitors with Iso-Pods and the Moog Subsequent 37 analog synth.',
-    image: monitorsSynthImg,
-    dailyRate: 1550,
-    weekendRate: 2650,
-    regularValue: 1900,
-    savings: 350,
-    targetAudience: 'Music Producers, Amapiano Beatmakers, Film Composers, Sound Designers',
+    id: 'studio-monitoring-interface-suite',
+    name: 'The Studio Monitoring & Tracking Suite',
+    badge: 'Recording & Mixing Pick',
+    tagline: 'Precision reference monitors, MIDAS preamp interface & heavy stand hardware',
+    description: 'Equip your studio or hotel room with surgical acoustic clarity and pristine audio capture. Includes the Yamaha HS8 8-inch active reference monitor (or Pioneer DM-50 active pair), Behringer U-Phoria 24-bit/192kHz interface with MIDAS preamps, and heavy double-X hardware stands.',
+    image: pioneerDm50Img,
+    dailyRate: 680,
+    weekendRate: 1150,
+    regularValue: 790,
+    savings: 110,
+    targetAudience: 'Vocalists, Mixing Engineers, Beatmakers, Content Creators',
     includedItems: [
-      'Pair of Genelec 8040B Active 6.5" Studio Monitors',
-      'Moog Subsequent 37 Paraphonic Analog Synthesizer',
-      'Genelec Iso-Pod Vibration Isolation Feet',
-      'Heavy-Duty Studio Floor Stands',
-      'Balanced Mogami 1/4" and XLR Cable Loom',
-      'Full MIDI & USB Host Connections'
+      '1x Pioneer DM-50 5-Inch Active Monitor Pair (or Yamaha HS8 8" Reference)',
+      '1x Behringer U-Phoria 24-Bit/192kHz USB Audio Interface with MIDAS Preamps',
+      '1x Heavy-Duty Double-X Stand & Hardware Setup',
+      'Acoustic Decoupling Foam Isolation Pads',
+      'Balanced Mogami XLR & TRS Interconnect Cables',
+      'Surge-Protected Studio Distribution Board'
     ],
-    features: ['Brutal Mix Translation Honest Monitoring', 'Real Moog Ladder Filter & Multidrive', 'Pre-calibrated for Standard Rooms', 'Includes Flightcases']
+    features: ['DSP DJ/Production Sound Modes', '24-Bit/192kHz High Definition Audio', 'Direct Zero-Latency Monitoring', 'Mogami Studio Cables']
   },
   {
-    id: 'gauteng-launch-sound-system',
-    name: 'Gauteng Live Event & Launch PA System',
-    badge: 'Corporate & Sound Engineers',
-    tagline: '2200W active speaker pair with dual wireless microphones & mixer',
-    description: 'High-power, crystal-clear sound coverage for up to 300 guests. Ideal for Sandton product launches, private garden weddings, press conferences, and art gallery pop-ups with plug-and-play Bluetooth and mic inputs.',
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80',
-    dailyRate: 1950,
-    weekendRate: 3400,
-    regularValue: 2450,
-    savings: 500,
-    targetAudience: 'Event Planners, Corporate Brands, Private Party Organizers, Wedding DJs',
+    id: 'hardware-synth-sequencing-suite',
+    name: 'The Hardware Synth Sequencing & Diagnostic Rig',
+    badge: 'Hardware Lab Pick',
+    tagline: 'Steinberg 8x8 MIDI interface, Korg Volca FM, Volca Bass & DBBox audio tester',
+    description: 'The definitive sonic laboratory for hardware synth enthusiasts who need rock-solid MIDI sequencing and deep analog sound. Combines the Steinberg Midex 8 8x8 LTB interface, Korg Volca FM, Korg Volca Bass, and DBBox audio signal tester.',
+    image: steinbergMidex8Img,
+    dailyRate: 750,
+    weekendRate: 1280,
+    regularValue: 870,
+    savings: 120,
+    targetAudience: 'Hardware Electronic Artists, Sound Engineers, Synth Collectors',
     includedItems: [
-      '2x Yamaha DXR15mkII 1100W Powered Speakers',
-      'Pair of K&M Heavy Speaker Tripod Stands',
-      '1x Soundcraft Signature 10 Analog Mixer with Lexicon FX & USB',
-      '1x Shure BLX288/PG58 Dual Wireless Mic System (2 Handhelds)',
-      'Bluetooth 5.0 Audio Receiver for phone/laptop streaming',
-      'Complete 20m XLR and Heavy Extension Cable Rig'
+      '1x Steinberg Midex 8 8x8 USB Hardware MIDI Interface (Linear Time Base)',
+      '1x Korg Volca FM 3-Voice Digital FM Synthesizer (DX7 Compatible)',
+      '1x Korg Volca Bass 3-Oscillator Analogue Bass Machine',
+      '1x DBBox Studio DI Box & Audio Cable Signal Tester',
+      '8x 5-Pin DIN Heavy-Duty MIDI Cables + Audio Patch Leads',
+      'Dedicated AC Power Supplies and Flight Bags'
     ],
-    features: ['134 dB Sound Clarity Across the Venue', 'Dual Wireless Mics with 100m Range', 'Bluetooth Streaming for Background Music', 'Includes Setup Diagram Card']
+    features: ['128 Discrete MIDI Channels', 'Sub-Millisecond LTB Timing', 'DX7 Patch Compatibility', 'Built-in Audio Cable Diagnostics']
   }
 ];
 
 export const FREQUENT_QUESTIONS = [
   {
     q: 'Do you rent equipment outside of Gauteng?',
-    a: 'No. Gauteng Studio Gear Rentals strictly operates within the Gauteng province (Greater Johannesburg, Pretoria, Centurion, Midrand, Sandton, East Rand, West Rand, and Soweto). This strict territorial focus allows us to guarantee rapid 30 to 60-minute dispatch, same-day delivery, and immediate on-call technical replacement if anything requires assistance on set.'
+    a: 'No. Gear Rent Gauteng strictly operates within the Gauteng province (Greater Johannesburg, Pretoria, Centurion, Midrand, Sandton, East Rand, West Rand, and Soweto). This territorial focus guarantees rapid 30 to 55-minute dispatch, same-day delivery, and immediate on-call technical replacement if anything requires assistance on set.'
   },
   {
     q: 'What verification documents are required to hire gear?',
-    a: 'For security and insurance compliance under South African rental standards, first-time individual renters must provide: (1) A valid South African Green Barcoded ID or Smart ID Card (or valid Passport for international producers), (2) Proof of residential address not older than 3 months (utility bill or bank statement), and (3) A refundable security deposit via card or EFT. Registered South African production companies, broadcasters, and verified corporate agencies qualify for immediate zero-deposit rental accounts upon registration.'
+    a: 'For security and insurance compliance under South African rental standards, first-time individual renters provide: (1) A valid South African Green Barcoded ID or Smart ID Card (or valid Passport for international producers), (2) Proof of residential address not older than 3 months (utility bill or bank statement), and (3) A refundable security deposit via card or EFT. Registered South African production companies, broadcasters, and agencies qualify for immediate zero-deposit rental accounts.'
   },
   {
     q: 'How does the refundable security deposit work?',
-    a: 'Each gear item has a listed security deposit. When you return the equipment at the end of your rental period and our technicians complete the standard 15-minute functional check at our Wynberg depot or on collection, your deposit is released back into your South African bank account within 12 to 24 hours.'
+    a: 'Each gear item has a listed refundable security deposit. When you return the equipment at the end of your rental period and our technicians complete the standard 15-minute functional check at our Wynberg depot or on collection, your deposit is released back into your South African bank account within 12 to 24 hours via EFT.'
   },
   {
     q: 'What about load shedding and power surges in Gauteng?',
@@ -675,21 +785,21 @@ export const CUSTOMER_TESTIMONIALS = [
     name: 'Kabelo "Kabz" M.',
     role: 'Amapiano Producer & DJ',
     location: 'Soweto / Sandton',
-    quote: 'We had a headline set at a major Sandton rooftop event and our usual DJM mixer had an issue 3 hours before doors opened. Gauteng Studio Gear Rentals delivered a brand-new DJM-A9 in a flightcase to the venue in 40 minutes flat. Absolute lifesavers.',
+    quote: 'We had a live session at a Sandton venue and needed a Pioneer CDJ-350 and the Kaoss Pad KP3 for live transitions. Gear Rent delivered everything in pristine flightcases with all cables in 40 minutes flat. Absolute lifesavers.',
     rating: 5
   },
   {
     name: 'Sarah Van Der Merwe',
-    role: 'Commercial Voice Director',
+    role: 'Music Producer & Sound Designer',
     location: 'Rosebank, Johannesburg',
-    quote: 'Renting the Neumann U87 and Apollo Twin for our 3-day voiceover tracking session was seamless. The gear arrived in pristine condition, sealed in flightcases with Mogami cables. FICA verification took just 5 minutes over WhatsApp.',
+    quote: 'Renting the Korg Volca collection and Steinberg Midex 8 for our 3-day synth camp was effortless. The gear was spotless, calibrated, and the Akai Max 49 touch faders worked like a dream with Ableton. EFT deposit refunded the next morning.',
     rating: 5
   },
   {
     name: 'Thabo Dlamini',
     role: 'Live Event Technical Lead',
     location: 'Menlyn, Pretoria',
-    quote: 'The Yamaha DXR PA package and dual wireless Shure mics sounded incredible for our 250-guest launch at Time Square Menlyn. Zero feedback, powerful clarity, and transparent pricing in Rands with no surprise charges.',
+    quote: 'The Pioneer DM-50 monitors, Behringer interface, and DBBox tester saved our audio checkout on event day at Time Square Menlyn. Clean sound, zero noise, and transparent pricing in Rands with no surprise charges.',
     rating: 5
   }
 ];

@@ -45,12 +45,11 @@ export const GearCatalogSection: React.FC<GearCatalogProps> = ({
 
   const categories: { id: GearCategory; label: string }[] = [
     { id: 'all', label: 'All Equipment' },
-    { id: 'dj', label: 'DJ Equipment' },
-    { id: 'microphones', label: 'Studio Mics' },
-    { id: 'monitors', label: 'Monitors & Subs' },
+    { id: 'synthesizers', label: 'Synths & Samplers' },
+    { id: 'dj', label: 'DJ Decks & Mixers' },
+    { id: 'monitors', label: 'Studio Monitors' },
     { id: 'interfaces', label: 'Interfaces & Outboard' },
-    { id: 'synthesizers', label: 'Synths & Drum Machines' },
-    { id: 'pa_sound', label: 'PA & Live Audio' },
+    { id: 'hardware', label: 'Stands & Hardware' },
   ];
 
   // Extract unique brands
@@ -240,6 +239,7 @@ export const GearCatalogSection: React.FC<GearCatalogProps> = ({
                 <img
                   src={item.image}
                   alt={item.name}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />

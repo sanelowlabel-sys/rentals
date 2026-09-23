@@ -32,6 +32,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           <img
             src="/logo.png"
             alt="Gear Rent Logo"
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover"
             onError={() => setImgError(true)}
           />

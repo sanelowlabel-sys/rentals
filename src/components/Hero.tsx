@@ -10,7 +10,8 @@ import {
   CheckCircle2, 
   Zap, 
   ArrowRight,
-  Sparkles
+  Sparkles,
+  Layers
 } from 'lucide-react';
 import heroStudioImg from '../assets/images/gauteng_studio_hero_1789487858964.jpg';
 import { GearCategory } from '../types';
@@ -27,12 +28,11 @@ export const Hero: React.FC<HeroProps> = ({
   onScrollToCatalog,
 }) => {
   const categories: { id: GearCategory; label: string; icon: React.ElementType; count: string }[] = [
-    { id: 'dj', label: 'DJ Systems & CDJs', icon: Disc3, count: 'Pioneer, Technics' },
-    { id: 'microphones', label: 'Studio Mics', icon: Mic2, count: 'Neumann, Shure' },
-    { id: 'monitors', label: 'Studio Monitors & Subs', icon: Speaker, count: 'Genelec, Yamaha' },
-    { id: 'interfaces', label: 'Audio Interfaces & Outboard', icon: Cpu, count: 'Universal Audio, Neve' },
-    { id: 'synthesizers', label: 'Synths & Drum Machines', icon: Sliders, count: 'Moog, Nord, Roland' },
-    { id: 'pa_sound', label: 'Live PA & Event Audio', icon: Speaker, count: 'Yamaha DXR, EV Subs' },
+    { id: 'synthesizers', label: 'Synths & Samplers', icon: Sliders, count: 'Korg Volcas, Kaossilator, Akai' },
+    { id: 'dj', label: 'DJ Decks & Mixers', icon: Disc3, count: 'Pioneer CDJ-350, Numark, Hybrid' },
+    { id: 'monitors', label: 'Studio Monitors', icon: Speaker, count: 'Yamaha HS8, JBL LSR, Pioneer DM-50' },
+    { id: 'interfaces', label: 'Interfaces & Outboard', icon: Cpu, count: 'Behringer U-Phoria, Midex 8, DBBox' },
+    { id: 'hardware', label: 'Stands & Hardware Bundles', icon: Layers, count: 'Double-X stands, Tripods' },
   ];
 
   return (
@@ -108,6 +108,7 @@ export const Hero: React.FC<HeroProps> = ({
               <img
                 src={heroStudioImg}
                 alt="Gear Rent Gauteng - Professional Audio Equipment in Johannesburg"
+                referrerPolicy="no-referrer"
                 className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f1013] via-[#0f1013]/40 to-transparent" />
@@ -148,10 +149,10 @@ export const Hero: React.FC<HeroProps> = ({
             <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-400 font-display">
               Select Gear Department
             </h2>
-            <span className="text-xs text-zinc-400">6 Dedicated Categories</span>
+            <span className="text-xs text-zinc-400">16 Available Rental Units</span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {categories.map((cat) => {
               const Icon = cat.icon;
               return (

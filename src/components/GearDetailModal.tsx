@@ -64,6 +64,7 @@ export const GearDetailModal: React.FC<GearDetailModalProps> = ({
               <img
                 src={gear.image}
                 alt={gear.name}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-3 left-3">

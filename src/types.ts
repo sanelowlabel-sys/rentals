@@ -1,10 +1,11 @@
 export type GearCategory = 
   | 'all' 
+  | 'synthesizers' 
   | 'dj' 
-  | 'microphones' 
   | 'monitors' 
   | 'interfaces' 
-  | 'synthesizers' 
+  | 'hardware'
+  | 'microphones' 
   | 'pa_sound';
 
 export interface GearItem {
